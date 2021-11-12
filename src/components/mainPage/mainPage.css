@@ -8,9 +8,40 @@
 }
 
 .mainFeedContainer {
-    display: flex;
-    justify-content: space-between;
+    width: 40%;
     height: 100%;
     border-left: 0.5px solid white;
     border-right: 0.5px solid white;
+}
+
+.homeHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.5px solid white;
+}
+
+.leftBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    height: 100vh;
+}
+
+.leftSlideBar {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.left-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.l-t {
+    display: flex;
+    color: white;
+    justify-content: space-between;
 }

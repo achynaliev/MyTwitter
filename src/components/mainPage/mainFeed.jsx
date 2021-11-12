@@ -8,8 +8,11 @@ const MainFeed = () => {
   return (
 
     <div className="mainFeedContainer">
-      <h1>Home</h1>
-      <AutoAwesomeIcon style={{ color: "white" }} />
+      <div className="homeHeader">
+        <h1>Home</h1>
+        <AutoAwesomeIcon style={{ color: "white" }} />
+
+      </div>
     </div>
   )
 
