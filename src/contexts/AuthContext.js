@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { userContext } from "./UserContext";
 
 export const authContext = React.createContext();
 
@@ -30,9 +31,11 @@ const AuthContextProvider = (props) => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      console.log(user);
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
+        console.log(user, "useEf");
         dispatch({
           type: "LOGIN_USER",
           payload: user,
@@ -49,17 +52,12 @@ const AuthContextProvider = (props) => {
     });
   }, []);
 
-  const createUserWithEmailAndPasswordHandler = async (
-    displayName,
-    email,
-    password
-  ) => {
+  const createUserWithEmailAndPasswordHandler = async (email, password) => {
     try {
       const { user } = await createUserWithEmailAndPassword(
         auth,
         email,
-        password,
-        displayName
+        password
       );
     } catch (error) {
       console.log(error);

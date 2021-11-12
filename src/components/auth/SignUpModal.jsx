@@ -13,7 +13,7 @@ const SignUpModal = (props) => {
 
   function handleSignUp({ displayName, email, password }) {
     try {
-      createUserWithEmailAndPasswordHandler(displayName, email, password);
+      createUserWithEmailAndPasswordHandler(email, password);
       createAUser(displayName, email);
       props.handleClose();
       navigate("/");

@@ -32,7 +32,7 @@ const UserContextProvider = (props) => {
       following: [],
     };
     try {
-      let res = await axios.post(APIusers);
+      await axios.post(APIusers, user);
     } catch (e) {
       console.log(e);
     }
