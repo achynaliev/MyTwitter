@@ -1,7 +1,8 @@
 import React from "react";
+import AuthMain from "../components/auth/AuthMain";
 
 const AuthPage = () => {
-  return <div>AuthPage</div>;
+  return <AuthMain />;
 };
 
 export default AuthPage;

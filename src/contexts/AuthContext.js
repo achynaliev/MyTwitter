@@ -61,16 +61,16 @@ const AuthContextProvider = (props) => {
   }, []);
 
   const createUserWithEmailAndPasswordHandler = async (
-    username,
+    displayName,
     email,
-    gender,
     password
   ) => {
     try {
       const { user } = await createUserWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
+        displayName
       );
       //   generateUserDocument(user, {
       //     gender,
@@ -144,7 +144,6 @@ const AuthContextProvider = (props) => {
       console.log(e);
     }
   };
-  console.log(state.user, "______");
 
   return (
     <authContext.Provider
