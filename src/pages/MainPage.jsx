@@ -1,20 +1,8 @@
-import React, { useContext } from "react";
-import { authContext } from "../contexts/AuthContext";
-import TweeterRoutes from "../Routes";
+import React from "react";
 import MainPageStructure from "../components/mainPage/MainPageStructure";
-import AuthPage from "./AuthPage";
 
 const MainPage = () => {
-  const { user } = useContext(authContext);
-
-  let mainPage;
-  if (user) {
-    mainPage = <MainPageStructure />;
-  } else {
-    mainPage = <AuthPage />;
-  }
-
-  return <>{mainPage} </>;
+  return <MainPageStructure />;
 };
 
 export default MainPage;
