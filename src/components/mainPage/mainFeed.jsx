@@ -1,7 +1,19 @@
 import React from "react";
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import "./mainPage.css"
 
-const mainFeed = () => {
-  return <div>Main Feed</div>;
+const MainFeed = () => {
+
+
+  return (
+
+    <div className="mainFeedContainer">
+      <h1>Home</h1>
+      <AutoAwesomeIcon style={{ color: "white" }} />
+    </div>
+  )
+
+
 };
 
-export default mainFeed;
+export default MainFeed;
