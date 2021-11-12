@@ -1,5 +1,7 @@
+import TweeterRoutes from "./Routes";
+
 function App() {
-  return <div className="App"></div>;
+  return <TweeterRoutes />;
 }
 
 export default App;
