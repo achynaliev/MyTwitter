@@ -2,16 +2,19 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Modal, Form } from "react-bootstrap";
 import { authContext } from "../../contexts/AuthContext";
+import { userContext } from "../../contexts/UserContext";
 import * as yup from "yup";
 import { Formik } from "formik";
 
 const SignUpModal = (props) => {
   let navigate = useNavigate();
   const { createUserWithEmailAndPasswordHandler } = useContext(authContext);
+  const { createAUser } = useContext(userContext);
 
   function handleSignUp({ displayName, email, password }) {
     try {
       createUserWithEmailAndPasswordHandler(displayName, email, password);
+      createAUser(displayName, email);
       props.handleClose();
       navigate("/");
     } catch (e) {

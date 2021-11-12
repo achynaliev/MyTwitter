@@ -3,8 +3,6 @@ import LeftSideBar from "./LeftSideBar";
 import MainFeed from "./MainFeed";
 import RightSideBar from "./RightSideBar";
 
-
-
 const MainPageStructure = () => {
   return (
     <div className="main-page-structure">
@@ -12,7 +10,7 @@ const MainPageStructure = () => {
       <MainFeed />
       <RightSideBar />
     </div>
-  )
+  );
 };
 
 export default MainPageStructure;
