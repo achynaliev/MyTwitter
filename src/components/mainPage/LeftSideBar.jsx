@@ -62,7 +62,7 @@ const LeftSideBar = () => {
     }
   }
 
-  setTimeout(userLogedIn, 1000);
+  setTimeout(userLogedIn, 1500);
 
   return (
     <div className="leftBar">
