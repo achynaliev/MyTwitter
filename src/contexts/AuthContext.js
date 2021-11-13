@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useContext } from "react";
 //import axios from "axios";
 import { auth } from "../firebase/firebase";
 import {
@@ -28,6 +28,7 @@ const reducer = (state = INIT_STATE, action) => {
 
 const AuthContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
+  const { createAUser } = useContext(userContext);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -35,7 +36,6 @@ const AuthContextProvider = (props) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        console.log(user, "useEf");
         dispatch({
           type: "LOGIN_USER",
           payload: user,
@@ -52,13 +52,18 @@ const AuthContextProvider = (props) => {
     });
   }, []);
 
-  const createUserWithEmailAndPasswordHandler = async (email, password) => {
+  const createUserWithEmailAndPasswordHandler = async (
+    email,
+    password,
+    username
+  ) => {
     try {
       const { user } = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
+      await createAUser(email, username, user.uid);
     } catch (error) {
       console.log(error);
       //setError("Error Signing up with email and password");

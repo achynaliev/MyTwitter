@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import "./mainPage.css";
 import HomeIcon from "@mui/icons-material/Home";
@@ -9,18 +9,26 @@ import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantity
 import { authContext } from "../../contexts/AuthContext";
 import { Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+import { userContext } from "../../contexts/UserContext";
+
 const LeftSideBar = () => {
   const { logOut, user } = useContext(authContext);
+  const { getAUser, username } = useContext(userContext);
   let navigate = useNavigate();
   function handleLogOut() {
     logOut();
     localStorage.clear();
     navigate("/auth");
   }
+  let get;
+
+  let uid = localStorage.getItem("uid");
+  let usrname = localStorage.getItem("username");
+
+  useEffect(() => (uid ? getAUser(uid) : null), []);
 
   let logout;
   if (user) {
-    let uid = localStorage.getItem("uid");
     if (!uid) {
       localStorage.setItem("uid", user.uid);
     }
@@ -37,6 +45,16 @@ const LeftSideBar = () => {
     );
   }
 
+  let hz;
+  if (username) {
+    if (!usrname) {
+      localStorage.setItem("username", username[0].username);
+    }
+    hz = <br style={{ display: "none" }}></br>;
+  } else {
+    hz = <div style={{ display: "none" }}></div>;
+  }
+
   return (
     <div className="leftBar">
       <div className="leftSideBar">
@@ -44,7 +62,7 @@ const LeftSideBar = () => {
           <TwitterIcon style={{ color: "white" }} />
         </div>
         <div className="left-text">
-          <Link to="/home" style={{ textDecoration: "none" }}>
+          <Link to="/" style={{ textDecoration: "none" }}>
             <div className="l-t">
               <HomeIcon />
               <h5>Home</h5>
@@ -79,8 +97,8 @@ const LeftSideBar = () => {
           <Button variant="contained">Tweet</Button>
         </div>
       </div>
-
       {logout}
+      {hz}
     </div>
   );
 };

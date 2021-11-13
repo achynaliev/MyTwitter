@@ -5,17 +5,11 @@ export const userContext = React.createContext();
 
 const INIT_STATE = {
   user: null,
-  failedLogin: null,
-  //countryToEdit: null,
 };
 
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
-    case "LOGIN_USER":
-      return { ...state, user: action.payload };
-    case "FAILED_LOGIN":
-      return { ...state, failedLogin: action.payload };
-    case "LOGOUT_USER":
+    case "SET_USER":
       return { ...state, user: action.payload };
     default:
       return state;
@@ -25,14 +19,27 @@ const reducer = (state = INIT_STATE, action) => {
 const UserContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createAUser = async (username, email) => {
+  const createAUser = async (email, username, uid) => {
     let user = {
       username,
       email,
+      uid,
       following: [],
     };
     try {
       await axios.post(APIusers, user);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getAUser = async (uid) => {
+    try {
+      let result = await axios(APIusers + "?uid=" + uid);
+      dispatch({
+        type: "SET_USER",
+        payload: result.data,
+      });
     } catch (e) {
       console.log(e);
     }
@@ -48,7 +55,14 @@ const UserContextProvider = (props) => {
   };
 
   return (
-    <userContext.Provider value={{ createAUser, AddToUserFollowings }}>
+    <userContext.Provider
+      value={{
+        createAUser,
+        AddToUserFollowings,
+        getAUser,
+        username: state.user,
+      }}
+    >
       {props.children}
     </userContext.Provider>
   );

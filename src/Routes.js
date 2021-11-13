@@ -8,12 +8,10 @@ import MainPage from "./pages/MainPage";
 import AuthPage from "./pages/AuthPage";
 import MerchPage from "./pages/MerchPage";
 
-
-
 const TweeterRoutes = () => {
   return (
-    <AuthContextProvider>
-      <UserContextProvider>
+    <UserContextProvider>
+      <AuthContextProvider>
         <TweetContextProvider>
           <MerchContextProvider>
             <BrowserRouter>
@@ -25,8 +23,8 @@ const TweeterRoutes = () => {
             </BrowserRouter>
           </MerchContextProvider>
         </TweetContextProvider>
-      </UserContextProvider>
-    </AuthContextProvider>
+      </AuthContextProvider>
+    </UserContextProvider>
   );
 };
 
