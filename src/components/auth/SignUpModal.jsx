@@ -2,16 +2,18 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Modal, Form } from "react-bootstrap";
 import { authContext } from "../../contexts/AuthContext";
+import { userContext } from "../../contexts/UserContext";
 import * as yup from "yup";
 import { Formik } from "formik";
 
 const SignUpModal = (props) => {
   let navigate = useNavigate();
   const { createUserWithEmailAndPasswordHandler } = useContext(authContext);
+  const { createAUser } = useContext(userContext);
 
-  function handleSignUp({ displayName, email, password }) {
+  function handleSignUp({ username, email, password }) {
     try {
-      createUserWithEmailAndPasswordHandler(displayName, email, password);
+      createUserWithEmailAndPasswordHandler(email, password, username);
       props.handleClose();
       navigate("/");
     } catch (e) {
@@ -20,7 +22,7 @@ const SignUpModal = (props) => {
   }
 
   const schema = yup.object().shape({
-    displayName: yup.string().min(2).max(30).required("Required"),
+    username: yup.string().min(2).max(30).required("Required"),
     email: yup.string().email().min(3).max(255).required("Required"),
     password: yup
       .string()
@@ -64,11 +66,11 @@ const SignUpModal = (props) => {
                   <Form.Control
                     type="text"
                     placeholder="Enter your username"
-                    name="displayName"
+                    name="username"
                     onChange={handleChange}
-                    isValid={!errors.displayName && touched.displayName}
-                    isInvalid={!!errors.displayName}
-                    value={values.displayName}
+                    isValid={!errors.username && touched.username}
+                    isInvalid={!!errors.username}
+                    value={values.username}
                   />
                   <Form.Control.Feedback type="invalid">
                     {errors.username}

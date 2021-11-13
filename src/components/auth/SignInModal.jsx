@@ -1,19 +1,29 @@
 import React, { useContext, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router";
 import { authContext } from "../../contexts/AuthContext";
 
 const SignInModal = (props) => {
+  let navigate = useNavigate();
+
   const { loginUserWithEmail } = useContext(authContext);
   const [user, setUser] = useState({ email: "", password: "" });
+
   function handleChange(e) {
     let userr = { ...user, [e.target.name]: e.target.value };
     setUser(userr);
   }
 
   function handleLogIn(e) {
-    e.preventDefault();
-    loginUserWithEmail(user.email, user.password);
-    props.handleCloseLogin();
+    try {
+      e.preventDefault();
+      loginUserWithEmail(user.email, user.password);
+      props.handleCloseLogin();
+      navigate("/")
+
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (

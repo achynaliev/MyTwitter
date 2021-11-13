@@ -1,21 +1,13 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useContext } from "react";
 //import axios from "axios";
 import { auth } from "../firebase/firebase";
-import {
-  doc,
-  addDoc,
-  collection,
-  getDocs,
-  getDoc,
-  setDoc,
-} from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { fireDB } from "../firebase/firebase";
+import { userContext } from "./UserContext";
 
 export const authContext = React.createContext();
 
@@ -36,14 +28,14 @@ const reducer = (state = INIT_STATE, action) => {
 
 const AuthContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
+  const { createAUser } = useContext(userContext);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      console.log(user);
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        console.log(user);
-        const uid = user.uid;
         dispatch({
           type: "LOGIN_USER",
           payload: user,
@@ -61,48 +53,21 @@ const AuthContextProvider = (props) => {
   }, []);
 
   const createUserWithEmailAndPasswordHandler = async (
-    displayName,
     email,
-    password
+    password,
+    username
   ) => {
     try {
       const { user } = await createUserWithEmailAndPassword(
         auth,
         email,
-        password,
-        displayName
+        password
       );
-      //   generateUserDocument(user, {
-      //     gender,
-      //     username,
-      //     rooms: [],
-      //     roomTitles: [],
-      //   });
+      await createAUser(email, username, user.uid);
     } catch (error) {
       console.log(error);
       //setError("Error Signing up with email and password");
     }
-  };
-
-  const generateUserDocument = async (user, additionalData) => {
-    if (!user) return;
-    console.log(user, additionalData);
-
-    const userRef = doc(fireDB, "users", `${user.uid}`);
-    const querySnapshot = await getDoc(userRef);
-    if (!querySnapshot.exists()) {
-      const { email, photoURL } = user;
-      try {
-        let res = await setDoc(doc(fireDB, "users", `${user.uid}`), {
-          email,
-          photoURL,
-          ...additionalData,
-        });
-      } catch (error) {
-        console.error("Error creating user document", error);
-      }
-    }
-    return getUserDocument(user.uid);
   };
 
   const logOut = async () => {
@@ -119,24 +84,13 @@ const AuthContextProvider = (props) => {
       });
   };
 
-  const getUserDocument = async (uid) => {
-    if (!uid) return null;
-    try {
-      const userDocumentRef = doc(fireDB, "users", `${uid}`);
-      const userDocument = await getDoc(userDocumentRef);
-
-      console.log(userDocument._document.data.value.mapValue.fields);
-    } catch (error) {
-      console.error("Error fetching user", error);
-    }
-  };
-
   const loginUserWithEmail = (email, password) => {
     try {
       signInWithEmailAndPassword(auth, email, password).then(
         (userCredential) => {
           // Signed in
           const user = userCredential.user;
+          console.log(user);
           // ...
         }
       );
