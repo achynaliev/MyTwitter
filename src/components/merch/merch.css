@@ -6,6 +6,25 @@
     /* background: white; */
 }
 
+.rightSideMerch {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.merchNavbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.05px solid rgb(117, 117, 117);
+    ;
+}
+
+.m-n {
+    display: flex;
+}
+
 /* .right-side {
     width: 80vw;
 } */
