@@ -39,11 +39,12 @@ const reducer = (state = INIT_STATE, action) => {
 const TweetContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createATweet = async (tweet, imgURL, uid) => {
+  const createATweet = async (tweet, imgURL, uid, username) => {
     let tw = {
       tweet,
       imgURL,
-      owner: uid,
+      ownerUID: uid,
+      ownerUsername: username,
     };
     try {
       await axios.post(APItweets, tw);

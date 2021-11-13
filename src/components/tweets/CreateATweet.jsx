@@ -19,7 +19,8 @@ const CreateATweet = () => {
   function handleTweeting() {
     if (tweetInfo.tweet.length > 0) {
       let uid = localStorage.getItem("uid");
-      createATweet(tweetInfo.tweet, tweetInfo.imageURL, uid);
+      let username = localStorage.getItem("username");
+      createATweet(tweetInfo.tweet, tweetInfo.imageURL, uid, username);
     } else {
       alert("please add a tweet");
     }

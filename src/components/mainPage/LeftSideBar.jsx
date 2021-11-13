@@ -20,7 +20,6 @@ const LeftSideBar = () => {
     localStorage.clear();
     navigate("/auth");
   }
-  let get;
 
   let uid = localStorage.getItem("uid");
   let usrname = localStorage.getItem("username");
@@ -31,6 +30,7 @@ const LeftSideBar = () => {
   if (user) {
     if (!uid) {
       localStorage.setItem("uid", user.uid);
+      console.log(uid);
     }
     logout = (
       <Button variant="contained" onClick={() => handleLogOut()}>
@@ -54,6 +54,15 @@ const LeftSideBar = () => {
   } else {
     hz = <div style={{ display: "none" }}></div>;
   }
+
+  function userLogedIn() {
+    uid = localStorage.getItem("uid");
+    if (!uid) {
+      navigate("/auth");
+    }
+  }
+
+  setTimeout(userLogedIn, 1000);
 
   return (
     <div className="leftBar">
