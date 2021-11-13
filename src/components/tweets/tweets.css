@@ -31,6 +31,8 @@
 .CreateTweetContainer {
   display: flex;
   width: 100%;
+  border-bottom: 0.05px solid rgb(117, 117, 117);
+  padding-bottom: 25px;
 }
 
 .createTweetInputContainer {
@@ -38,10 +40,10 @@
 }
 
 .lowerInputContainer {
-  padding-top: 5px;
+  padding-top: 15px;
   display: flex;
   justify-content: space-between;
-  border-top: 0.05px solid rgb(134, 134, 134);
+  border-top: 0.05px solid rgb(117, 117, 117);
 }
 
 .lowerInputLogos {
