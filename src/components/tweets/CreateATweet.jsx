@@ -51,7 +51,7 @@ const CreateATweet = () => {
 
   return (
     <div className="CreateTweetContainer">
-      <img src={atai} className="createTweetLogo"></img>
+      <img src={atai} className="createTweetLogo" alt="..."></img>
       <div className="createTweetInputContainer">
         <input
           className="createTweetInput"

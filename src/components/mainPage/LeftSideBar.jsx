@@ -48,11 +48,13 @@ const LeftSideBar = () => {
   let hz;
   if (username) {
     if (!usrname) {
+      console.log(username);
       localStorage.setItem("username", username[0].username);
+      localStorage.setItem("following", username[0].following);
     }
     hz = <br style={{ display: "none" }}></br>;
   } else {
-    hz = <div style={{ display: "none" }}></div>;
+    hz = <div></div>;
   }
 
   function userLogedIn() {
@@ -101,13 +103,13 @@ const LeftSideBar = () => {
               <h5>Products</h5>
             </div>
           </Link>
+          {hz}
         </div>
         <div className="btn-button">
           <Button variant="contained">Tweet</Button>
         </div>
       </div>
       {logout}
-      {hz}
     </div>
   );
 };

@@ -24,7 +24,7 @@ const UserContextProvider = (props) => {
       username,
       email,
       uid,
-      following: [],
+      following: [username],
     };
     try {
       await axios.post(APIusers, user);

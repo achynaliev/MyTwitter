@@ -1,6 +1,7 @@
 import React from "react";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import CreateATweet from "../tweets/CreateATweet";
+import TweetsList from "../tweets/TweetsList";
 import "./mainPage.css";
 
 const MainFeed = () => {
@@ -11,6 +12,7 @@ const MainFeed = () => {
         <AutoAwesomeIcon style={{ color: "white" }} />
       </div>
       <CreateATweet />
+      <TweetsList />
     </div>
   );
 };
