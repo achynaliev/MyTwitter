@@ -8,6 +8,7 @@
 }
 
 .mainFeedContainer {
+    margin-top: 5px;
     width: 40%;
     height: 100%;
     border-left: 0.5px solid white;
@@ -27,12 +28,14 @@
     justify-content: space-between;
     align-content: space-between;
     height: 100vh;
+    margin-top: 10px;
 }
 
 .leftSlideBar {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    margin: 25px;
+    padding: 100px;
 }
 
 .left-text {
@@ -44,4 +47,14 @@
     display: flex;
     color: white;
     justify-content: space-between;
+    margin-top: 25px;
+}
+
+.btn-button {
+    margin-top: 25px;
+}
+
+.input {
+    margin-top: 15px;
+    border-radius: -50px;
 }
