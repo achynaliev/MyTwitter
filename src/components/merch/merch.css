@@ -1,0 +1,19 @@
+.merchPage {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    /* background: white; */
+}
+
+/* .right-side {
+    width: 80vw;
+} */
+
+/* .left-side {
+    width: 20vw;
+} */
+
+/* .navbar {
+    width: 100vw;
+} */
