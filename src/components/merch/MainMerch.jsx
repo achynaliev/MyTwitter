@@ -7,13 +7,12 @@ import "./merch.css";
 const MainMerch = () => {
     return (
         <div className="merchPage">
-            <div className="left-side">
-                <LeftSideBar />
-            </div>
-            <div className="right-side">
 
-                <MerchRightSide />
-            </div>
+            <LeftSideBar />
+
+
+
+            <MerchRightSide />
         </div>
     );
 };
