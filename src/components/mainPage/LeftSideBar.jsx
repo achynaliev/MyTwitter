@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import "./mainPage.css";
 import HomeIcon from "@mui/icons-material/Home";
@@ -22,15 +22,11 @@ const LeftSideBar = () => {
   }
 
   let uid = localStorage.getItem("uid");
-  let usrname = localStorage.getItem("username");
-
-  useEffect(() => (uid ? getAUser(uid) : null), []);
 
   let logout;
   if (user) {
     if (!uid) {
       localStorage.setItem("uid", user.uid);
-      console.log(uid);
     }
     logout = (
       <Button variant="contained" onClick={() => handleLogOut()}>
@@ -45,18 +41,6 @@ const LeftSideBar = () => {
     );
   }
 
-  let hz;
-  if (username) {
-    if (!usrname) {
-      console.log(username);
-      localStorage.setItem("username", username[0].username);
-      localStorage.setItem("following", username[0].following);
-    }
-    hz = <br style={{ display: "none" }}></br>;
-  } else {
-    hz = <div></div>;
-  }
-
   function userLogedIn() {
     uid = localStorage.getItem("uid");
     if (!uid) {
@@ -64,7 +48,28 @@ const LeftSideBar = () => {
     }
   }
 
+  function getUsr() {
+    let usrname = localStorage.getItem("username");
+    if (uid && !usrname) {
+      getAUser(uid);
+    }
+  }
+
+  function setusr() {
+    if (username) {
+      let usrname = localStorage.getItem("username");
+      if (!usrname) {
+        localStorage.setItem("username", username[0].username);
+        localStorage.setItem(
+          "following",
+          JSON.stringify(username[0].following)
+        );
+      }
+    }
+  }
   setTimeout(userLogedIn, 1500);
+  setTimeout(() => getUsr(), 1500);
+  setTimeout(() => setusr(), 2000);
 
   return (
     <div className="leftBar">
@@ -103,7 +108,6 @@ const LeftSideBar = () => {
               <h5>Products</h5>
             </div>
           </Link>
-          {hz}
         </div>
         <div className="btn-button">
           <Button variant="contained">Tweet</Button>

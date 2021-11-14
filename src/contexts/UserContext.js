@@ -36,6 +36,7 @@ const UserContextProvider = (props) => {
   const getAUser = async (uid) => {
     try {
       let result = await axios(APIusers + "?uid=" + uid);
+      console.log(result.data);
       dispatch({
         type: "SET_USER",
         payload: result.data,
