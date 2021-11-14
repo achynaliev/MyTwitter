@@ -17,6 +17,7 @@ const TweeterRoutes = () => {
             <BrowserRouter>
               <Routes>
                 <Route exact path="/" element={<MainPage />} />
+                <Route exact path="/explore" element={<MainPage />} />
                 <Route exact path="/auth" element={<AuthPage />} />
                 <Route exact path="/products" element={<MerchPage />} />
               </Routes>

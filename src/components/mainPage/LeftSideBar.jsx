@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import "./mainPage.css";
 import HomeIcon from "@mui/icons-material/Home";

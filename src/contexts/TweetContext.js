@@ -39,12 +39,21 @@ const reducer = (state = INIT_STATE, action) => {
 const TweetContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createATweet = async (tweet, imgURL, uid, username) => {
+  const createATweet = async (
+    tweet,
+    imgURL,
+    uid,
+    username,
+    createdAt,
+    CreatedAtMs
+  ) => {
     let tw = {
       tweet,
       imgURL,
       ownerUID: uid,
       ownerUsername: username,
+      createdAt,
+      CreatedAtMs,
     };
     try {
       await axios.post(APItweets, tw);
@@ -77,6 +86,7 @@ const TweetContextProvider = (props) => {
         type: "EXPLORE_FEED_TWEETS",
         payload: result.data,
       });
+      console.log("hz why");
     } catch (e) {
       console.log(e);
     }
