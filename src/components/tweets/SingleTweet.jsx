@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./tweets.css";
 import atai from "../../images/atai.jpg";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import ShareIcon from "@mui/icons-material/Share";
+import ReplayIcon from "@mui/icons-material/Replay";
 
 function timeSince(date) {
   let seconds = Math.floor((new Date() - date) / 1000);
@@ -43,6 +47,12 @@ const SingleTweet = ({ tweet }) => {
           @{tweet.ownerUsername} {timeLeft} ago
         </h6>
         <h5 className="tweetText">{tweet.tweet}</h5>
+        <div className="tweetFooter">
+          <ChatBubbleOutlineIcon sx={{ fontSize: 18 }} />
+          <ReplayIcon sx={{ fontSize: 20 }} />
+          <FavoriteBorderIcon sx={{ fontSize: 20 }} />
+          <ShareIcon sx={{ fontSize: 18 }} />
+        </div>
       </div>
     </div>
   );

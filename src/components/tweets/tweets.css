@@ -75,3 +75,15 @@
   color: rgb(117, 117, 117);
   font-size: 14px;
 }
+
+.tweetText {
+  font-size: 22px;
+}
+
+.tweetFooter {
+  padding-top: 10px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
