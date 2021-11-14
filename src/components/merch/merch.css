@@ -55,6 +55,14 @@
     color: white;
 }
 
+.form {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color: white;
+}
+
 /* .btnAddProduct {
     margin-top: 10px;
 } */

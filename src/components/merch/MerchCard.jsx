@@ -11,7 +11,8 @@ const MerchCard = () => {
         <Card sx={{ maxWidth: 250, minWidth: 250, marginTop: 5 }}>
             <CardMedia
                 component="img"
-                height="140"
+                width="140"
+                // height="140"
                 image="https://cdn1.ozone.ru/s3/multimedia-7/6066580783.jpg"
                 alt=""
             />
