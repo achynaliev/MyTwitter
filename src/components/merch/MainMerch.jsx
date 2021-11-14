@@ -9,9 +9,6 @@ const MainMerch = () => {
         <div className="merchPage">
 
             <LeftSideBar />
-
-
-
             <MerchRightSide />
         </div>
     );
