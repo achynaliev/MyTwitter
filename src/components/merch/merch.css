@@ -21,8 +21,22 @@
     ;
 }
 
+.categories {
+    border-bottom: 0.05px solid rgb(117, 117, 117);
+    display: flex;
+    justify-content: space-between;
+}
+
+.merchCard {
+    margin-top: 10px;
+}
+
 .m-n {
     display: flex;
+}
+
+.input {
+    color: white;
 }
 
 /* .right-side {
