@@ -33,32 +33,18 @@ const AddMerchModal = ({ handleClose, open }) => {
             >
                 <Box sx={style} >
                     <Typography id="modal-modal-title" variant="h6" component="h2" >
-                        <form >
-                            <TextField
-                                label="Title"
-                                type="text"
-                                variant="standard"
-                                name="name"
-                            />
-                            <TextField
-                                label="Image"
-                                type="text"
-                                variant="standard"
-                                name="image"
-                            />
-                            <TextField
-                                label="Price"
-                                type="number"
-                                variant="standard"
-                                name="price"
-                            />
-                            <TextField
-                                label="Category"
-                                type="text"
-                                variant="standard"
-                                name="category"
-                            />
+                        <form className="form">
+                            <label color="white">Title: </label>
+                            <input type="text" placeholder="" />
 
+                            <label>Image: </label>
+                            <input type="text" placeholder="" />
+
+                            <label>Price: </label>
+                            <input type="number" placeholder="" />
+
+                            <label>Category: </label>
+                            <input type="text" placeholder="" />
                         </form>
                         <Button
                             className="btnAddProduct"
