@@ -8,27 +8,27 @@ import Typography from '@mui/material/Typography';
 
 const MerchCard = () => {
     return (
-        <Card sx={{ maxWidth: 300, minWidth: 300 }}>
+        <Card sx={{ maxWidth: 250, minWidth: 250, marginTop: 5 }}>
             <CardMedia
                 component="img"
                 height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-                alt="green iguana"
+                image="https://cdn1.ozone.ru/s3/multimedia-7/6066580783.jpg"
+                alt=""
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    Lizard
+                    T-Shirt
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
-                </Typography>
+
             </CardContent>
             <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                <Button
+                    variant="contained"
+                >
+                    Add to Cart</Button>
+                <Button variant="contained">Buy</Button>
             </CardActions>
-        </Card>
+        </Card >
     );
 };
 
