@@ -3,6 +3,7 @@ import MerchCard from './MerchCard';
 import { Button, Link } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddMerchModal from '../merch/AddMerchModal'
+import MerchCardList from "./MerchCardList"
 
 
 
@@ -38,7 +39,7 @@ const MerchRightSide = () => {
                     <h3>T-Shirt</h3>
                 </Link>
                 <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-                    <h3>Hat</h3>
+                    <h3>Cap</h3>
                 </Link>
                 <Link to="/" style={{ textDecoration: "none", color: "white" }}>
                     <h3>Scarf</h3>
@@ -47,7 +48,7 @@ const MerchRightSide = () => {
             </div>
 
             <div className="merchCard">
-                <MerchCard />
+                <MerchCardList />
             </div>
         </div>
     );

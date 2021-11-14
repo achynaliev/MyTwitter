@@ -4,7 +4,7 @@ import { APImerch } from '../helpers/config'
 
 export const merchContext = React.createContext()
 const INIT_STATE = {
-    products: [],
+    merch: [],
 }
 
 const reducer = (state = INIT_STATE, action) => {
@@ -13,9 +13,6 @@ const reducer = (state = INIT_STATE, action) => {
             return { ...state, merch: action.payload }
         case "EDIT_SPECIFIC_MERCH":
             return { ...state, merch: action.payload }
-
-
-
         default:
             return state;
     }
@@ -42,8 +39,9 @@ const MerchContextProvider = (props) => {
     const getAllMerch = async () => {
         try {
             const response = await axios(APImerch)
+            console.log("here")
             let action = {
-                type: "GET_MERCH",
+                type: "GET_ALL_MERCH",
                 payload: response.data,
             };
             dispatch(action)
@@ -83,6 +81,7 @@ const MerchContextProvider = (props) => {
                 getAllMerch: getAllMerch,
                 editSpecificMerch: editSpecificMerch,
                 deleteMerch: deleteMerch,
+                merch: state.merch
             }}
         >
             {props.children}

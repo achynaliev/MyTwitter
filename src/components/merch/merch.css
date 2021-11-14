@@ -29,15 +29,35 @@
 
 .merchCard {
     margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 10px;
 }
 
 .m-n {
     display: flex;
 }
 
-.input {
+.merchList {
     color: white;
 }
+
+.merchCardList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.addMerchModal {
+    color: white;
+}
+
+/* .btnAddProduct {
+    margin-top: 10px;
+} */
 
 /* .right-side {
     width: 80vw;
