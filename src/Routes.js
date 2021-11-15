@@ -19,7 +19,11 @@ const TweeterRoutes = () => {
                 <Route exact path="/" element={<MainPage />} />
                 <Route exact path="/explore" element={<MainPage />} />
                 <Route exact path="/auth" element={<AuthPage />} />
-                <Route exact path="/products" element={<MerchPage />} />
+                <Route
+                  exact
+                  path="/products/:category"
+                  element={<MerchPage />}
+                />
               </Routes>
             </BrowserRouter>
           </MerchContextProvider>

@@ -107,7 +107,7 @@ const LeftSideBar = () => {
               <h5 className="leftSideListText">Profile</h5>
             </div>
           </Link>
-          <Link to="/products" style={{ textDecoration: "none" }}>
+          <Link to="/products/all" style={{ textDecoration: "none" }}>
             <div className="l-t">
               <ProductionQuantityLimitsIcon className="leftListIcons" />
               <h5 className="leftSideListText">Products</h5>

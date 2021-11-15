@@ -1,74 +1,77 @@
 .merchPage {
-    width: 80%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    /* background: white; */
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  /* background: white; */
 }
 
 .rightSideMerch {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    color: white;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border-left: 0.05px solid rgb(117, 117, 117);
+  padding-left: 20px;
 }
 
 .merchNavbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 0.05px solid rgb(117, 117, 117);
-    ;
+  width: 100%;
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  justify-content: space-between;
+  border-bottom: 0.05px solid rgb(117, 117, 117);
 }
 
 .categories {
-    border-bottom: 0.05px solid rgb(117, 117, 117);
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
 }
 
 .merchCard {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding-top: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 10px;
 }
 
 .m-n {
-    display: flex;
+  display: flex;
 }
 
 .merchList {
-    color: white;
+  color: white;
 }
 
 .merchCardList {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .addMerchModal {
-    color: white;
+  color: white;
 }
 
 .form {
-    width: 70%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    color: white;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: white;
 }
 
 .category {
-    width: 70%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    color: white;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: white;
 }
 
 /* .btnAddProduct {
