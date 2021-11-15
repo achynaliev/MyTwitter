@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import AuthPage from "./pages/AuthPage";
 import MerchPage from "./pages/MerchPage";
+import CartMainPage from "./components/cart/CartMainPage";
 
 const TweeterRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const TweeterRoutes = () => {
                   path="/products/:category"
                   element={<MerchPage />}
                 />
+                <Route exact path="/cart" element={<CartMainPage />} />
               </Routes>
             </BrowserRouter>
           </MerchContextProvider>
