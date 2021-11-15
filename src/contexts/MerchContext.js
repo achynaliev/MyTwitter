@@ -1,11 +1,13 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
 import { APImerch } from '../helpers/config'
-
+import { calcSubPrice, calcTotalPrice } from '../helpers/calcPrice';
 
 export const merchContext = React.createContext()
 const INIT_STATE = {
     merch: [],
+    merchCountInCart: JSON.parse(localStorage.getItem("cart")) ? JSON.parse(localStorage.getItem("cart")).merch.length : 0,
+    cart: null
 }
 
 const reducer = (state = INIT_STATE, action) => {
@@ -80,7 +82,83 @@ const MerchContextProvider = (props) => {
         }
     }
 
+    const addAndDeleteMerchInCart = (merch) => {
+        let cart = JSON.parse(localStorage.getItem("cart"))
+        if (!cart) {
+            cart = {
+                merch: [],
+                totalPrice: 0,
+            }
+        }
+        let product = {
+            merch,
+            count: 1,
+            subPrice: 0
+        }
+        product.subPrice = calcSubPrice(product)
+        let checkArr = cart.merch.filter(item => {
+            return item.merch.id === merch.id;
+        });
+        console.log(checkArr)
+        if (checkArr.length === 0) {
+            cart.merch.push(product);
+        } else {
+            cart.merch = cart.merch.filter(item => {
+                return item.merch.id !== merch.id;
+            });
+        }
 
+        cart.totalPrice = calcTotalPrice(cart);
+        localStorage.setItem("cart", JSON.stringify(cart))
+        let action = {
+            type: "ADD_AND_DELETE_MERCH_IN_CART",
+            payload: cart.merch.length,
+
+        };
+        dispatch(action)
+    };
+
+    const checkMerchInCart = (id) => {
+        console.log(id)
+        let cart = JSON.parse(localStorage.getItem("cart"))
+        console.log(cart)
+        let checkArr = cart.merch.filter(item => item.merch.id === id)
+        console.log(checkArr.length === 0)
+        if (checkArr.length === 0) {
+            return false;
+        } else {
+            return true
+        }
+
+    }
+    const getCart = () => {
+        let cart = JSON.parse(localStorage.getItem("cart"))
+        cart = {
+            merch: [],
+            totalPrice: 0
+        }
+        let action = {
+            type: "GET_CART",
+            payload: cart
+        };
+        dispatch(action)
+    };
+    const changeCountMerch = (count, id) => {
+        if (count < 1) {
+            return;
+        }
+        let cart = JSON.parse(localStorage.getItem("cart"))
+        cart.merch = cart.merch.map(item => {
+            if (item.merch.id === id) {
+                item.count = count
+                item.subPrice = calcSubPrice(item)
+            }
+            return item
+        });
+        cart.totalPrice = calcTotalPrice(cart)
+        localStorage.setItem("cart", JSON.stringify(cart))
+        getCart()
+    }
     return (
         <merchContext.Provider
             value={{
@@ -88,7 +166,12 @@ const MerchContextProvider = (props) => {
                 getAllMerch: getAllMerch,
                 editSpecificMerch: editSpecificMerch,
                 deleteMerch: deleteMerch,
-                merch: state.merch
+                addAndDeleteMerchInCart: addAndDeleteMerchInCart,
+                checkMerchInCart: checkMerchInCart,
+                getCart: getCart,
+                changeCountMerch: changeCountMerch,
+                merchCountInCart: state.merchCountInCart,
+                merch: state.merch,
             }}
         >
             {props.children}

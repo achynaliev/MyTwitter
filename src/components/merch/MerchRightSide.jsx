@@ -6,7 +6,6 @@ import AddMerchModal from '../merch/AddMerchModal'
 import MerchCardList from "./MerchCardList"
 
 
-
 const MerchRightSide = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
