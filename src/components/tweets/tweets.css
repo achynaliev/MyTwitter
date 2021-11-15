@@ -52,11 +52,12 @@
   padding-top: 15px;
   display: flex;
   justify-content: space-between;
-  border-top: 0.05px solid rgb(117, 117, 117);
 }
 
 .lowerInputLogos {
-  width: 50%;
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .userLogoOnTweet {
@@ -77,11 +78,12 @@
 }
 
 .tweetText {
-  font-size: 22px;
+  font-size: 21px;
+  font-weight: 400;
 }
 
 .tweetFooter {
-  padding-top: 10px;
+  padding-top: 15px;
   width: 100%;
   margin: auto;
   display: flex;

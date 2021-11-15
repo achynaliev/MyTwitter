@@ -9,8 +9,7 @@ import { useLocation } from "react-router";
 import "./tweets.css";
 
 const CreateATweet = () => {
-  const { createATweet, getTweetsForMainFeed, getTweetsForExploreFeed } =
-    useContext(tweetContext);
+  const { createATweet } = useContext(tweetContext);
   const [tweetInfo, setTweet] = useState({ tweet: "", imageURL: "" });
   let location = useLocation();
 
@@ -48,10 +47,11 @@ const CreateATweet = () => {
         uid,
         username,
         time,
-        timeMls
+        timeMls,
+        explore,
+        following
       );
       setTweet({ tweet: "", imageURL: "" });
-      explore ? getTweetsForExploreFeed() : getTweetsForMainFeed(following);
     } else {
       alert("please add a tweet");
     }

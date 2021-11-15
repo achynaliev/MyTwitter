@@ -45,7 +45,9 @@ const TweetContextProvider = (props) => {
     uid,
     username,
     createdAt,
-    CreatedAtMs
+    CreatedAtMs,
+    explore,
+    following
   ) => {
     let tw = {
       tweet,
@@ -57,6 +59,11 @@ const TweetContextProvider = (props) => {
     };
     try {
       await axios.post(APItweets, tw);
+      if (explore) {
+        getTweetsForExploreFeed();
+      } else {
+        getTweetsForMainFeed(following);
+      }
     } catch (e) {
       console.log(e);
     }

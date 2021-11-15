@@ -48,10 +48,13 @@ const SingleTweet = ({ tweet }) => {
         </h6>
         <h5 className="tweetText">{tweet.tweet}</h5>
         <div className="tweetFooter">
-          <ChatBubbleOutlineIcon sx={{ fontSize: 18 }} />
-          <ReplayIcon sx={{ fontSize: 20 }} />
-          <FavoriteBorderIcon sx={{ fontSize: 20 }} />
-          <ShareIcon sx={{ fontSize: 18 }} />
+          <ChatBubbleOutlineIcon
+            sx={{ fontSize: 18 }}
+            style={{ color: "gray" }}
+          />
+          <ReplayIcon sx={{ fontSize: 20 }} style={{ color: "gray" }} />
+          <FavoriteBorderIcon sx={{ fontSize: 20 }} style={{ color: "gray" }} />
+          <ShareIcon sx={{ fontSize: 18 }} style={{ color: "gray" }} />
         </div>
       </div>
     </div>
