@@ -3,9 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { TextField } from '@mui/material';
 import "./merch.css";
-// import { color } from '@mui/system';
 
 
 const style = {
@@ -23,6 +21,7 @@ const style = {
 
 
 const AddMerchModal = ({ handleClose, open }) => {
+
     return (
         <div className="addMerchModal">
             <Modal
