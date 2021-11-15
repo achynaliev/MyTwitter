@@ -28,6 +28,7 @@ const LeftSideBar = () => {
     if (!uid) {
       localStorage.setItem("uid", user.uid);
     }
+
     logout = (
       <Button variant="contained" onClick={() => handleLogOut()}>
         Log Out
@@ -57,7 +58,11 @@ const LeftSideBar = () => {
 
   function setusr() {
     if (username) {
+      let profileIMG = localStorage.getItem("profileIMG");
       let usrname = localStorage.getItem("username");
+      if (!profileIMG) {
+        localStorage.setItem("profileIMG", username[0].imageURL);
+      }
       if (!usrname) {
         localStorage.setItem("username", username[0].username);
         localStorage.setItem(
@@ -102,7 +107,7 @@ const LeftSideBar = () => {
               <h5 className="leftSideListText">Profile</h5>
             </div>
           </Link>
-          <Link to="products" style={{ textDecoration: "none" }}>
+          <Link to="/products" style={{ textDecoration: "none" }}>
             <div className="l-t">
               <ProductionQuantityLimitsIcon className="leftListIcons" />
               <h5 className="leftSideListText">Products</h5>

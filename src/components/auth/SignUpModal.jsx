@@ -9,9 +9,14 @@ const SignUpModal = (props) => {
   let navigate = useNavigate();
   const { createUserWithEmailAndPasswordHandler } = useContext(authContext);
 
-  function handleSignUp({ username, email, password }) {
+  function handleSignUp({ username, email, password, imageURL }) {
     try {
-      createUserWithEmailAndPasswordHandler(email, password, username);
+      createUserWithEmailAndPasswordHandler(
+        email,
+        password,
+        username,
+        imageURL
+      );
       props.handleClose();
       navigate("/");
     } catch (e) {
@@ -22,6 +27,7 @@ const SignUpModal = (props) => {
   const schema = yup.object().shape({
     username: yup.string().min(2).max(30).required("Required"),
     email: yup.string().email().min(3).max(255).required("Required"),
+    imageURL: yup.string().min(2).max(255).required("Required"),
     password: yup
       .string()
       .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
@@ -49,6 +55,7 @@ const SignUpModal = (props) => {
             initialValues={{
               username: "",
               email: "",
+              imageURL: "",
               password: "",
               passwordConfirmation: "",
             }}
@@ -84,6 +91,21 @@ const SignUpModal = (props) => {
                     isValid={!errors.email && touched.email}
                     isInvalid={!!errors.email}
                     value={values.email}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.email}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Profile Image URL</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter profile image URL"
+                    name="imageURL"
+                    onChange={handleChange}
+                    isValid={!errors.imageURL && touched.imageURL}
+                    isInvalid={!!errors.imageURL}
+                    value={values.imageURL}
                   />
                   <Form.Control.Feedback type="invalid">
                     {errors.email}

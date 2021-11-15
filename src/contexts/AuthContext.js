@@ -54,7 +54,8 @@ const AuthContextProvider = (props) => {
   const createUserWithEmailAndPasswordHandler = async (
     email,
     password,
-    username
+    username,
+    imageURL
   ) => {
     try {
       const { user } = await createUserWithEmailAndPassword(
@@ -62,7 +63,7 @@ const AuthContextProvider = (props) => {
         email,
         password
       );
-      await createAUser(email, username, user.uid);
+      await createAUser(email, username, user.uid, imageURL);
     } catch (error) {
       console.log(error);
       //setError("Error Signing up with email and password");

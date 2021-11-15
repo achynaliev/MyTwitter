@@ -9,11 +9,13 @@ const TweetsList = () => {
     getTweetsForExploreFeed,
     mainFeedTweets,
     exploreFeedTweets,
+    searchResults,
   } = useContext(tweetContext);
   let location = useLocation();
 
   const [mainTweets, setMainTweets] = useState(mainFeedTweets);
   const [exploreTweets, setExploreTweets] = useState(exploreFeedTweets);
+  const [searchResultsState, setSearchResultsState] = useState(searchResults);
 
   let explore;
   let following = localStorage.getItem("following");
@@ -45,19 +47,35 @@ const TweetsList = () => {
   }, [mainFeedTweets]);
 
   useEffect(() => {
+    let arr = [...searchResults];
+    arr.sort((a, b) => b.CreatedAtMs - a.CreatedAtMs);
+    setSearchResultsState(arr);
+  }, [searchResults]);
+
+  useEffect(() => {
     let arr = [...exploreFeedTweets];
     arr.sort((a, b) => b.CreatedAtMs - a.CreatedAtMs);
     setExploreTweets(arr);
   }, [exploreFeedTweets]);
 
   if (explore && exploreTweets.length > 0) {
-    return (
-      <div>
-        {exploreTweets.map((tweet) => (
-          <SingleTweet key={tweet.id} tweet={tweet} />
-        ))}
-      </div>
-    );
+    if (searchResultsState.length > 0) {
+      return (
+        <div>
+          {searchResultsState.map((tweet) => (
+            <SingleTweet key={tweet.id} tweet={tweet} />
+          ))}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {exploreTweets.map((tweet) => (
+            <SingleTweet key={tweet.id} tweet={tweet} />
+          ))}
+        </div>
+      );
+    }
   } else if (mainTweets.length > 0) {
     return <div>main</div>;
   } else {

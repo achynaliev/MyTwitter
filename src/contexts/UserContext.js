@@ -19,11 +19,12 @@ const reducer = (state = INIT_STATE, action) => {
 const UserContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createAUser = async (email, username, uid) => {
+  const createAUser = async (email, username, uid, imageURL) => {
     let user = {
       username,
       email,
       uid,
+      imageURL,
       following: [username],
     };
     try {

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./mainPage.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import { tweetContext } from "../../contexts/TweetContext";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -18,6 +19,7 @@ const Search = styled("div")(({ theme }) => ({
     marginLeft: theme.spacing(3),
     width: "auto",
   },
+  color: "white",
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
@@ -28,6 +30,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  color: "white",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -45,6 +48,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const RightSideBar = () => {
+  const { searchForTweetsAndUsers } = useContext(tweetContext);
+
+  function handleChageOnInput(e) {
+    e.preventDefault();
+    searchForTweetsAndUsers(e.target.value);
+  }
+
   return (
     <div className="rightSideBar">
       <div className="input">
@@ -53,7 +63,7 @@ const RightSideBar = () => {
             <SearchIcon />
           </SearchIconWrapper>
           <StyledInputBase
-            // onChange={(e) => filterPhones("q", e.target.value)}
+            onChange={(e) => handleChageOnInput(e)}
             placeholder="Search Twitter"
             inputProps={{ "aria-label": "search" }}
           />

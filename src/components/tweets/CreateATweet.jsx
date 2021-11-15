@@ -18,6 +18,14 @@ const CreateATweet = () => {
     setTweet(userr);
   }
 
+  let profileIMG = localStorage.getItem("profileIMG");
+  let avatar;
+  if (profileIMG) {
+    avatar = profileIMG;
+  } else {
+    avatar = atai;
+  }
+
   let explore;
   let following = localStorage.getItem("following");
   if (following) {
@@ -49,7 +57,8 @@ const CreateATweet = () => {
         time,
         timeMls,
         explore,
-        following
+        following,
+        profileIMG
       );
       setTweet({ tweet: "", imageURL: "" });
     } else {
@@ -82,7 +91,7 @@ const CreateATweet = () => {
 
   return (
     <div className="CreateTweetContainer">
-      <img src={atai} className="createTweetLogo" alt="..."></img>
+      <img src={avatar} className="createTweetLogo" alt="..."></img>
       <div className="createTweetInputContainer">
         <input
           className="createTweetInput"

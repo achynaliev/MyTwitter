@@ -41,7 +41,11 @@ const SingleTweet = ({ tweet }) => {
 
   return (
     <div className="tweetContainer">
-      <img src={atai} className="userLogoOnTweet" alt="..."></img>
+      <img
+        src={tweet.ownerImgURl ? tweet.ownerImgURl : atai}
+        className="userLogoOnTweet"
+        alt="..."
+      ></img>
       <div className="createTweetInputContainer">
         <h6 className="tweetUsername">
           @{tweet.ownerUsername} {timeLeft} ago
