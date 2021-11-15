@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import { APImerch } from '../helpers/config'
 
+
 export const merchContext = React.createContext()
 const INIT_STATE = {
     merch: [],
@@ -13,6 +14,10 @@ const reducer = (state = INIT_STATE, action) => {
             return { ...state, merch: action.payload }
         case "EDIT_SPECIFIC_MERCH":
             return { ...state, merch: action.payload }
+        case "ADD_AND_DELETE_MERCH_IN_CART":
+            return { ...state, merchCountInCart: action.payload };
+        case "GET_CART":
+            return { ...state, cart: action.payload };
         default:
             return state;
     }
@@ -74,6 +79,8 @@ const MerchContextProvider = (props) => {
             console.log(e)
         }
     }
+
+
     return (
         <merchContext.Provider
             value={{

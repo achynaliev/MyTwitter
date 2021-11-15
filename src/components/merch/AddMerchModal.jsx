@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import "./merch.css";
+import { merchContext } from '../../contexts/MerchContext';
 
 
 const style = {
@@ -21,6 +22,29 @@ const style = {
 
 
 const AddMerchModal = ({ handleClose, open }) => {
+    const [myMerch, setMyMerch] = React.useState({
+        title: "",
+        image: "",
+        price: "",
+        category: "",
+    });
+
+    function handleChange(e) {
+        let tempMyMerch = { ...myMerch, [e.target.name]: e.target.value };
+        setMyMerch(tempMyMerch)
+    }
+    const { createMerch } = React.useContext(merchContext)
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(myMerch)
+        if (myMerch.category === "") {
+            createMerch(myMerch.title, myMerch.image, myMerch.price, "t-shirt")
+        } else {
+            createMerch(myMerch)
+        }
+        handleClose()
+    }
 
     return (
         <div className="addMerchModal">
@@ -34,22 +58,42 @@ const AddMerchModal = ({ handleClose, open }) => {
                     <Typography id="modal-modal-title" variant="h6" component="h2" >
                         <form className="form">
                             <label color="white">Title: </label>
-                            <input type="text" placeholder="" />
+                            <input
+                                name="title"
+                                type="text" placeholder=""
+                                onChange={(e) => handleChange(e)}
+                            />
 
                             <label>Image: </label>
-                            <input type="text" placeholder="" />
+                            <input
+                                name="image"
+                                type="text" placeholder=""
+                                onChange={(e) => handleChange(e)}
+
+                            />
 
                             <label>Price: </label>
-                            <input type="number" placeholder="" />
+                            <input
+                                name="price"
+                                type="number" placeholder=""
+                                onChange={(e) => handleChange(e)}
+
+                            />
 
                             <label>Category: </label>
-                            <input type="text" placeholder="" />
+                            <select id="category" name="category" onChange={(e) => handleChange(e)}>
+                                <option value="t-shirt">T-Shirt</option>
+                                <option value="cap">Cap</option>
+                                <option value="scarf">Scarf</option>
+                            </select>
                         </form>
                         <Button
                             className="btnAddProduct"
                             variant="contained"
                             color="primary"
-                            type="submit">Add Product</Button>
+                            type="submit"
+                            onClick={(e) => handleSubmit(e)}
+                        >Add Product</Button>
 
                     </Typography>
 

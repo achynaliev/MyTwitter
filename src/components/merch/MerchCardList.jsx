@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import "./merch.css";
 import MerchCard from './MerchCard';
-
 import { merchContext } from '../../contexts/MerchContext';
 
 const MerchCardList = () => {
@@ -9,7 +8,6 @@ const MerchCardList = () => {
     useEffect(() => {
         getAllMerch()
     }, [])
-    console.log(merch)
 
     return (
         <div className="merchCardList">
@@ -17,7 +15,7 @@ const MerchCardList = () => {
             {
                 merch ? (
                     merch.map((item) => <MerchCard
-                        key={item.id}
+                        key={item.id} item={item}
                     />)
                 ) : (
                     <div></div>

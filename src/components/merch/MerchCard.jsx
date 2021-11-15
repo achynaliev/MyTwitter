@@ -6,25 +6,40 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const MerchCard = () => {
+const MerchCard = ({ item }) => {
+    function handleAddToCart(e) {
+        e.preventDefault()
+        let cart = localStorage.getItem("cart")
+        if (cart) {
+            cart = JSON.parse(cart)
+            cart.push(item)
+            cart = JSON.stringify(cart)
+            localStorage.setItem("cart", cart)
+        } else {
+            cart = [item]
+            cart = JSON.stringify(cart)
+            localStorage.setItem("cart", cart)
+        }
+    }
     return (
         <Card sx={{ maxWidth: 250, minWidth: 250, marginTop: 5 }}>
             <CardMedia
                 component="img"
                 width="140"
                 // height="140"
-                image="https://cdn1.ozone.ru/s3/multimedia-7/6066580783.jpg"
+                image={item.imageURL}
                 alt=""
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    T-Shirt
+                    {item.name}
                 </Typography>
 
             </CardContent>
             <CardActions>
                 <Button
                     variant="contained"
+                    onClick={(e) => handleAddToCart(e)}
                 >
                     Add to Cart</Button>
                 <Button variant="contained">Buy</Button>
