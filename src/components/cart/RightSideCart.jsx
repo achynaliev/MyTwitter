@@ -3,7 +3,7 @@ import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import "./cartMainPage.css"
 import CartMainPage from './CartMainPage';
 import { merchContext } from '../../contexts/MerchContext';
-
+import Button from "@mui/material/Button";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -72,7 +72,6 @@ const RightSideCart = () => {
                                     </TableCell>
 
 
-
                                 </TableRow>
                             )) : null}
                             <TableRow>
@@ -80,14 +79,17 @@ const RightSideCart = () => {
                                 <TableCell colSpan={1} align="right">{cart ? cart.totalPrice : 0} сом</TableCell>
 
                             </TableRow>
+
                         </TableBody>
+
                     </Table>
                 </TableContainer>
 
             </div>
 
         </div >
-    );
+
+    )
 };
 
 export default RightSideCart;
