@@ -1,39 +1,48 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import "./merch.css";
-import MerchCard from './MerchCard';
-import { merchContext } from '../../contexts/MerchContext';
-import { useNavigate, useParams } from 'react-router-dom';
+import MerchCard from "./MerchCard";
+import { merchContext } from "../../contexts/MerchContext";
+import { useNavigate, useParams } from "react-router-dom";
 
-const MerchCardList = () => {
-    const { merch, getItemsByCategory } = useContext(merchContext)
-    const [mrch, setMrch] = useState(merch)
-    const params = useParams();
-    useEffect(() => {
-        getItemsByCategory(params.category)
-    }, [])
+const MerchCardList = ({ setPageCount, currentPage }) => {
+  const { merch, getItemsByCategory } = useContext(merchContext);
+  const params = useParams();
+  useEffect(() => {
+    getItemsByCategory(params.category);
+  }, []);
 
-    useEffect(() => { setMrch(merch) }, [merch])
-    console.log(params.category)
+  let page;
+  if (merch) {
+    let pCount = Math.ceil(merch.length / 6);
+    setPageCount(pCount);
+    let start;
+    if (currentPage === 1) {
+      start = currentPage * 6 - 6;
+    } else {
+      start = currentPage * 6 - 7;
+    }
+    let end;
+    if (currentPage === 1) {
+      end = currentPage * 6;
+    } else {
+      end = currentPage * 6 - 1;
+    }
 
-    return (
-        <div className="merchCardList">
-
-            {
-                mrch ? (
-                    mrch.map((item) => <MerchCard
-                        key={item.id} item={item}
-                    />)
-                ) : (
-                    <div></div>
-                )
-            }
-        </div>
-
-
-
-    )
-
-
+    page = merch.filter((item, index) => {
+      if (index >= start && index < end) {
+        return [item];
+      }
+    });
+  } else {
+    page = <div></div>;
+  }
+  return (
+    <div className="merchCardList">
+      {page.map((item) => (
+        <MerchCard key={item.id} item={item} />
+      ))}
+    </div>
+  );
 };
 
 export default MerchCardList;

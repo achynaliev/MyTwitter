@@ -43,10 +43,10 @@ const MerchContextProvider = (props) => {
       console.log(e);
     }
   };
+
   const getAllMerch = async () => {
     try {
       const response = await axios(APImerch);
-      console.log(response)
       let action = {
         type: "GET_ALL_MERCH",
         payload: response.data,
@@ -69,6 +69,7 @@ const MerchContextProvider = (props) => {
       console.log(e);
     }
   };
+
   const deleteMerch = async (id) => {
     try {
       const response = await axios.delete(APImerch + id);
@@ -144,8 +145,8 @@ const MerchContextProvider = (props) => {
       payload: cart,
     };
     dispatch(action);
-    console.log("here")
   };
+
   const changeCountMerch = (count, id) => {
     if (count < 1) {
       return;
@@ -163,14 +164,15 @@ const MerchContextProvider = (props) => {
     getCart();
   };
 
+  const getPageCount = async () => {};
+
   const getItemsByCategory = async (category) => {
     try {
-      console.log(category)
+      console.log(category);
       if (category == "all") {
-        getAllMerch()
+        getAllMerch();
       } else {
-        let response = await axios(APIsmerch + "?category=" + category)
-        console.log(response.data)
+        let response = await axios(APIsmerch + "?category=" + category);
         let action = {
           type: "GET_ALL_MERCH",
           payload: response.data,
@@ -178,10 +180,9 @@ const MerchContextProvider = (props) => {
         dispatch(action);
       }
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
-
+  };
 
   return (
     <merchContext.Provider

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "@mui/material";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import AddMerchModal from "../merch/AddMerchModal";
@@ -16,7 +16,8 @@ const MerchRightSide = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const params = useParams();
-
+  const [pageCount, setPageCount] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   function styleLine(myLoc) {
     if (params.category === myLoc) {
@@ -32,13 +33,26 @@ const MerchRightSide = () => {
     }
   }
 
+  function handlePageNext() {
+    if (currentPage !== pageCount) {
+      let pageN = currentPage + 1;
+      console.log("zaebal");
+      setCurrentPage(pageN);
+    }
+  }
+
+  function handlePagePrev() {
+    if (currentPage !== 1) {
+      let pageN = currentPage - 1;
+      setCurrentPage(pageN);
+    }
+  }
+
   <IconButton size="large" aria-label="show 4 new mails" color="inherit">
     <Badge badgeContent={2} color="error">
       <ShoppingCart />
     </Badge>
   </IconButton>;
-
-
 
   return (
     <div className="rightSideMerch">
@@ -88,7 +102,15 @@ const MerchRightSide = () => {
       </div>
 
       <div className="merchCard">
-        <MerchCardList />
+        <MerchCardList setPageCount={setPageCount} currentPage={currentPage} />
+      </div>
+      <div className="pagination">
+        <Button onClick={() => handlePagePrev()} sx={{ fontSize: 20 }}>
+          prev
+        </Button>
+        <Button onClick={() => handlePageNext()} sx={{ fontSize: 20 }}>
+          next
+        </Button>
       </div>
     </div>
   );

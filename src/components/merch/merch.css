@@ -52,6 +52,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  height: 80vh;
 }
 
 .addMerchModal {
@@ -77,6 +78,13 @@
 .MerchHeaderText {
   font-size: 400;
   padding-top: 10px;
+}
+
+.pagination {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* .btnAddProduct {
