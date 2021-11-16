@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import { merchContext } from "../../contexts/MerchContext";
+import { Link } from "react-router-dom";
 
 const MerchCard = ({ item }) => {
   const { addAndDeleteMerchInCart, checkMerchInCart } =
@@ -64,7 +65,9 @@ const MerchCard = ({ item }) => {
             color={checkMerchInCart(item.id) ? "error" : "white"}
           />
         </Button>
-        <Button variant="contained">Buy</Button>
+        <Link to="/credit">
+          <Button variant="contained">Buy</Button>
+        </Link>
       </CardActions>
     </Card>
   );

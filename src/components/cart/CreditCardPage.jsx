@@ -2,9 +2,10 @@ import React from "react";
 import useForm from "./useForm";
 import { Button, Form, Alert, Row, Col } from "react-bootstrap";
 //import "bootstrap/dist/css/bootstrap.min.css";
-import "./CreditCardForm.css";
+import "./creditCardForm.css";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
+import { Link } from "react-router-dom";
 
 
 const CreditCardPage = () => {
@@ -24,7 +25,7 @@ const CreditCardPage = () => {
                             />
                         </div>
                         <Form onSubmit={handleSubmit}>
-                            <Form.Group>
+                            <Form.Group >
                                 <Form.Control
                                     type="text"
                                     id="cardName"
@@ -114,14 +115,16 @@ const CreditCardPage = () => {
                                     </Form.Group>
                                 </Col>
                             </Row>
-                            <Button
-                                size={"block"}
-                                data-testid="validateButton"
-                                id="validateButton"
-                                type="submit"
-                            >
-                                Validate
-                            </Button>
+                            <Link to="/cart">
+                                <Button
+                                    size={"block"}
+                                    data-testid="validateButton"
+                                    id="validateButton"
+                                    type="submit"
+                                >
+                                    Validate
+                                </Button>
+                            </Link>
                         </Form>
                     </div>
                     <Alert
