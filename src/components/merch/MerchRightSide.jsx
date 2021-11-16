@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Button } from "@mui/material";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import AddMerchModal from "../merch/AddMerchModal";
@@ -16,6 +16,7 @@ const MerchRightSide = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const params = useParams();
+
 
   function styleLine(myLoc) {
     if (params.category === myLoc) {
@@ -36,6 +37,8 @@ const MerchRightSide = () => {
       <ShoppingCart />
     </Badge>
   </IconButton>;
+
+
 
   return (
     <div className="rightSideMerch">
@@ -70,18 +73,18 @@ const MerchRightSide = () => {
       </div>
 
       <div className="categories">
-        <Link to="/products/all" style={styleLine("all")}>
+        <a href="/products/all" style={styleLine("all")}>
           <h4> All </h4>
-        </Link>
-        <Link to="/products/t-shirt" style={styleLine("t-shirt")}>
+        </a>
+        <a href="/products/t-shirt" style={styleLine("t-shirt")}>
           <h4>T-Shirt</h4>
-        </Link>
-        <Link to="/products/cap" style={styleLine("cap")}>
+        </a>
+        <a href="/products/cap" style={styleLine("cap")}>
           <h4>Cap</h4>
-        </Link>
-        <Link to="/products/scarf" style={styleLine("scarf")}>
+        </a>
+        <a href="/products/scarf" style={styleLine("scarf")}>
           <h4>Scarf</h4>
-        </Link>
+        </a>
       </div>
 
       <div className="merchCard">

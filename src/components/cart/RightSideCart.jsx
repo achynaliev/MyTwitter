@@ -11,7 +11,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import { Link } from 'react-router-dom';
+
 
 const RightSideCart = () => {
     const { merch, cart, getCart, changeCountMerch, getAllMerch } = useContext(merchContext)
@@ -29,7 +31,12 @@ const RightSideCart = () => {
         <div className="rightSideCart">
             <div className="cartNavbar">
                 <h3>Cart</h3>
-                <ShoppingCart />
+                <Link to="/products/all" style={{ textDecoration: "none" }}>
+                    <div className="l-t">
+                        <ProductionQuantityLimitsIcon className="leftListIcons" />
+                        <h5 className="leftSideListText">Products</h5>
+                    </div>
+                </Link>
             </div>
             <div className="hz">
 

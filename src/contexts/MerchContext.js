@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import axios from "axios";
-import { APImerch } from "../helpers/config";
+import { APImerch, APIsmerch } from "../helpers/config";
 import { calcSubPrice, calcTotalPrice } from "../helpers/calcPrice";
 
 export const merchContext = React.createContext();
@@ -162,7 +162,27 @@ const MerchContextProvider = (props) => {
     localStorage.setItem("cart", JSON.stringify(cart));
     getCart();
   };
-  console.log(state.merch)
+
+  const getItemsByCategory = async (category) => {
+    try {
+      console.log(category)
+      if (category == "all") {
+        getAllMerch()
+      } else {
+        let response = await axios(APIsmerch + "?category=" + category)
+        console.log(response.data)
+        let action = {
+          type: "GET_ALL_MERCH",
+          payload: response.data,
+        };
+        dispatch(action);
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+
   return (
     <merchContext.Provider
       value={{
@@ -174,9 +194,10 @@ const MerchContextProvider = (props) => {
         checkMerchInCart: checkMerchInCart,
         getCart: getCart,
         changeCountMerch: changeCountMerch,
+        getItemsByCategory: getItemsByCategory,
         merchCountInCart: state.merchCountInCart,
         merch: state.merch,
-        cart: state.cart
+        cart: state.cart,
       }}
     >
       {props.children}
