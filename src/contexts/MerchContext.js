@@ -46,7 +46,7 @@ const MerchContextProvider = (props) => {
   const getAllMerch = async () => {
     try {
       const response = await axios(APImerch);
-      console.log("here");
+      console.log(response)
       let action = {
         type: "GET_ALL_MERCH",
         payload: response.data,
@@ -117,11 +117,11 @@ const MerchContextProvider = (props) => {
   };
 
   const checkMerchInCart = (id) => {
-    console.log(id);
+    // console.log(id);
     let cart = JSON.parse(localStorage.getItem("cart"));
     if (cart) {
       let checkArr = cart.merch.filter((item) => item.merch.id === id);
-      console.log(checkArr.length === 0);
+      // console.log(checkArr.length === 0);
       if (checkArr.length === 0) {
         return false;
       } else {
@@ -159,6 +159,7 @@ const MerchContextProvider = (props) => {
     localStorage.setItem("cart", JSON.stringify(cart));
     getCart();
   };
+  console.log(state.merch)
   return (
     <merchContext.Provider
       value={{

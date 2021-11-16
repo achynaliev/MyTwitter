@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AddMerchModal from "../merch/AddMerchModal";
@@ -6,6 +6,8 @@ import MerchCardList from "./MerchCardList";
 import { useParams } from "react-router";
 import { borderColor } from "@mui/system";
 import { Link } from "react-router-dom";
+import { Badge } from "react-bootstrap";
+import { merchContext } from "../../contexts/MerchContext";
 
 const MerchRightSide = () => {
   const [open, setOpen] = React.useState(false);
@@ -13,7 +15,8 @@ const MerchRightSide = () => {
   const handleClose = () => setOpen(false);
   const [loc, setLoc] = useState("all");
   const params = useParams();
-  console.log(params);
+  // console.log(params);
+  const { getAllMerch, merchCountInCart } = useContext(merchContext)
 
   function styleLine(myLoc) {
     if (params.category === myLoc) {
@@ -41,7 +44,13 @@ const MerchRightSide = () => {
           >
             Add
           </Button>
-          <ShoppingCartIcon sx={{ fontSize: 31 }} />
+          <Link to="/cart">
+
+            <Badge badgeContent={merchCountInCart} color="error">
+              <ShoppingCartIcon sx={{ fontSize: 31 }} />
+            </Badge>
+          </Link>
+
           <AddMerchModal handleClose={handleClose} open={open} />
         </div>
       </div>
