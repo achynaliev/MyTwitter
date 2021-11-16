@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Button } from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import AddMerchModal from "../merch/AddMerchModal";
 import MerchCardList from "./MerchCardList";
 import { useParams } from "react-router";
-import { borderColor } from "@mui/system";
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
+import { merchContext } from "../../contexts/MerchContext";
+import "./merch.css";
 
 const MerchRightSide = () => {
   const [open, setOpen] = React.useState(false);
+  const { merchCountInCart } = useContext(merchContext);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [loc, setLoc] = useState("all");
   const params = useParams();
   console.log(params);
 
@@ -29,19 +32,38 @@ const MerchRightSide = () => {
     }
   }
 
+  <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+    <Badge badgeContent={2} color="error">
+      <ShoppingCart />
+    </Badge>
+  </IconButton>;
+
   return (
     <div className="rightSideMerch">
       <div className="merchNavbar">
-        <h2>Merchandise</h2>
+        <h2 className="MerchHeaderText">Merchandise</h2>
         <div className="m-n">
           <Button
-            sx={{ fontSize: 15, height: "32px", marginRight: "20px" }}
+            sx={{
+              fontSize: 15,
+              height: "32px",
+              marginRight: "20px",
+              marginTop: "12px",
+            }}
             variant="contained"
             onClick={handleOpen}
           >
             Add
           </Button>
-          <ShoppingCartIcon sx={{ fontSize: 31 }} />
+          <IconButton
+            size="large"
+            aria-label="show 4 new mails"
+            color="inherit"
+          >
+            <Badge badgeContent={merchCountInCart} color="error">
+              <ShoppingCart sx={{ fontSize: 28 }} />
+            </Badge>
+          </IconButton>
           <AddMerchModal handleClose={handleClose} open={open} />
         </div>
       </div>

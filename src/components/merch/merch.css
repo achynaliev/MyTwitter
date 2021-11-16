@@ -74,6 +74,10 @@
   color: white;
 }
 
+.MerchHeaderText {
+  font-size: 400;
+  padding-top: 10px;
+}
 /* .btnAddProduct {
     margin-top: 10px;
 } */
