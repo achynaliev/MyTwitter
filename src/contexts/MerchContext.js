@@ -133,15 +133,18 @@ const MerchContextProvider = (props) => {
   };
   const getCart = () => {
     let cart = JSON.parse(localStorage.getItem("cart"));
-    cart = {
-      merch: [],
-      totalPrice: 0,
-    };
+    if (!cart) {
+      cart = {
+        merch: [],
+        totalPrice: 0,
+      };
+    }
     let action = {
       type: "GET_CART",
       payload: cart,
     };
     dispatch(action);
+    console.log("here")
   };
   const changeCountMerch = (count, id) => {
     if (count < 1) {
@@ -173,6 +176,7 @@ const MerchContextProvider = (props) => {
         changeCountMerch: changeCountMerch,
         merchCountInCart: state.merchCountInCart,
         merch: state.merch,
+        cart: state.cart
       }}
     >
       {props.children}

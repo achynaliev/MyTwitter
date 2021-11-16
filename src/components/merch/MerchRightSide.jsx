@@ -60,6 +60,7 @@ const MerchRightSide = () => {
             color="inherit"
           >
             <Badge badgeContent={merchCountInCart} color="error">
+
               <ShoppingCart sx={{ fontSize: 28 }} />
             </Badge>
           </IconButton>
