@@ -1,20 +1,26 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "./merch.css";
 import MerchCard from './MerchCard';
 import { merchContext } from '../../contexts/MerchContext';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const MerchCardList = () => {
-    const { merch, getAllMerch } = useContext(merchContext)
+    const { merch, getItemsByCategory } = useContext(merchContext)
+    const [mrch, setMrch] = useState(merch)
+    const params = useParams();
     useEffect(() => {
-        getAllMerch()
+        getItemsByCategory(params.category)
     }, [])
+
+    useEffect(() => { setMrch(merch) }, [merch])
+    console.log(params.category)
 
     return (
         <div className="merchCardList">
 
             {
-                merch ? (
-                    merch.map((item) => <MerchCard
+                mrch ? (
+                    mrch.map((item) => <MerchCard
                         key={item.id} item={item}
                     />)
                 ) : (
