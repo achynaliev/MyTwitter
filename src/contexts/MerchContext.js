@@ -198,6 +198,7 @@ const MerchContextProvider = (props) => {
         merchCountInCart: state.merchCountInCart,
         merch: state.merch,
         cart: state.cart,
+
       }}
     >
       {props.children}
