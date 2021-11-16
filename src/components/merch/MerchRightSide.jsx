@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useContext } from "react";
-=======
-import React, { useContext, useState } from "react";
->>>>>>> origin/luiza-dev
 import { Button } from "@mui/material";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import AddMerchModal from "../merch/AddMerchModal";
@@ -11,13 +7,8 @@ import { useParams } from "react-router";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import { merchContext } from "../../contexts/MerchContext";
 import "./merch.css";
-=======
-import { Badge } from "react-bootstrap";
-import { merchContext } from "../../contexts/MerchContext";
->>>>>>> origin/luiza-dev
 
 const MerchRightSide = () => {
   const [open, setOpen] = React.useState(false);
@@ -25,8 +16,6 @@ const MerchRightSide = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const params = useParams();
-  // console.log(params);
-  const { getAllMerch, merchCountInCart } = useContext(merchContext)
 
   function styleLine(myLoc) {
     if (params.category === myLoc) {
