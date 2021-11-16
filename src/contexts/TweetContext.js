@@ -155,7 +155,13 @@ const TweetContextProvider = (props) => {
     }
   };
 
-  //const updateLikesCountForATweet = async (tweetId, )
+  const updateLikesCountForATweet = async (tweetId, likesCount) => {
+    try {
+      await axios.patch(APItweets + tweetId, { likesCount });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const getASpecificTweet = async (id) => {
     try {
@@ -189,6 +195,7 @@ const TweetContextProvider = (props) => {
         deleteATweet,
         getASpecificTweet,
         searchForTweetsAndUsers,
+        updateLikesCountForATweet,
         searchResults: state.searchResults,
         mainFeedTweets: state.mainFeedTweets,
         exploreFeedTweets: state.exploreFeedTweets,
