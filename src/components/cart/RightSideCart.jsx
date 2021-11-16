@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import "./cartMainPage.css"
 import CartMainPage from './CartMainPage';
@@ -11,14 +11,20 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Link } from 'react-router-dom';
 
 const RightSideCart = () => {
     const { merch, cart, getCart, changeCountMerch, getAllMerch } = useContext(merchContext)
     useEffect(() => {
-        getCart()
         getAllMerch()
     }, [])
-    console.log(merch)
+    useEffect(() => {
+        getCart()
+
+    }, [])
+
+
+
     return (
         <div className="rightSideCart">
             <div className="cartNavbar">
@@ -27,55 +33,52 @@ const RightSideCart = () => {
             </div>
             <div className="hz">
 
+
                 <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <Table sx={{ minWidth: 620 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell>Title</TableCell>
                                 <TableCell align="right">Image</TableCell>
                                 <TableCell align="right">Price</TableCell>
                                 <TableCell align="right">Category</TableCell>
-                                <TableCell align="right">Quantity</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {merch.map((item) => (
-                                <TableRow
-                                    key={item.id}
+                            {cart ? cart.merch.map((item) => (
+                                <TableRow TableRow
+                                    key={item.merch.id}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell component="th" scope="row">
-                                        {item.title}
+                                        {item.merch.title}
                                     </TableCell>
                                     <TableCell align="right">
-                                        <img width="50" src={item.imageURL} alt="" />
+                                        <img width="50" src={item.merch.imageURL} alt="" />
                                     </TableCell>
 
                                     <TableCell align="right">
-                                        <input type="number" value="item.count" onChange={(e) => changeCountMerch(e.target.value, item.merch.id)} />
+                                        {item.merch.price}
                                     </TableCell>
                                     <TableCell align="right">
-                                        {item.category}
+                                        {item.merch.category}
                                     </TableCell>
-                                    <TableCell align="right" align="right">
-                                        <div>+</div>
-                                        <div>-</div>
-                                    </TableCell>
+
 
 
                                 </TableRow>
-                            ))}
+                            )) : null}
                             <TableRow>
-                                <TableCell colSpan={3} align="right">Total:</TableCell>
-                                {/* <TableCell colSpan={1} align="right">{cart.totalPrice} сом</TableCell> */}
+                                <TableCell colSpan={3} align="right">Total: </TableCell>
+                                <TableCell colSpan={1} align="right">{cart ? cart.totalPrice : 0} сом</TableCell>
 
                             </TableRow>
                         </TableBody>
                     </Table>
                 </TableContainer>
 
-
             </div>
+
         </div >
     );
 };
