@@ -54,15 +54,17 @@ const MerchRightSide = () => {
           >
             Add
           </Button>
-          <IconButton
-            size="large"
-            aria-label="show 4 new mails"
-            color="inherit"
-          >
-            <Badge badgeContent={merchCountInCart} color="error">
-              <ShoppingCart sx={{ fontSize: 28 }} />
-            </Badge>
-          </IconButton>
+          <Link to="/cart">
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
+            >
+              <Badge badgeContent={merchCountInCart} color="error">
+                <ShoppingCart sx={{ fontSize: 28, color: "white" }} />
+              </Badge>
+            </IconButton>
+          </Link>
           <AddMerchModal handleClose={handleClose} open={open} />
         </div>
       </div>
