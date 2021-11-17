@@ -17,23 +17,16 @@ const MerchCard = ({ item }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  let admin = localStorage.getItem("admin")
+  let admin = localStorage.getItem("admin");
   let editBtn;
   if (admin === "true") {
-    editBtn = <Button
-      sx={{
-        fontSize: 15,
-        height: "32px",
-        marginRight: "20px",
-        marginTop: "12px",
-      }}
-      variant="contained"
-      onClick={handleOpen}
-    >
-      Edit
-    </Button>
+    editBtn = (
+      <Button variant="contained" onClick={handleOpen}>
+        Edit
+      </Button>
+    );
   } else {
-    editBtn = <div></div>
+    editBtn = <div></div>;
   }
 
   return (
@@ -89,7 +82,9 @@ const MerchCard = ({ item }) => {
           />
         </Button>
         <Link to="/credit">
-          <Button variant="contained">Buy</Button>
+          <Button sx={{ marginLeft: "10px" }} variant="contained">
+            Buy
+          </Button>
         </Link>
         {editBtn}
       </CardActions>

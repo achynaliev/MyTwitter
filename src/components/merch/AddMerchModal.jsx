@@ -90,15 +90,17 @@ const AddMerchModal = ({ handleClose, open }) => {
                 <option value="scarf">Scarf</option>
               </select>
             </form>
-            <Button
-              className="btnAddProduct"
-              variant="contained"
-              color="primary"
-              type="submit"
-              onClick={(e) => handleSubmit(e)}
-            >
-              Add Product
-            </Button>
+            <div style={{ paddingTop: "15px" }}>
+              <Button
+                className="btnAddProduct"
+                variant="contained"
+                color="primary"
+                type="submit"
+                onClick={(e) => handleSubmit(e)}
+              >
+                Add Product
+              </Button>
+            </div>
           </Typography>
         </Box>
       </Modal>
