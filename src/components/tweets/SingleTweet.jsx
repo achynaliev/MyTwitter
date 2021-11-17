@@ -6,6 +6,7 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ShareIcon from "@mui/icons-material/Share";
 import ReplayIcon from "@mui/icons-material/Replay";
 import { likesContext } from "../../contexts/LikesContext";
+import { tweetContext } from "../../contexts/TweetContext";
 
 function timeSince(date) {
   let seconds = Math.floor((new Date() - date) / 1000);
@@ -37,6 +38,7 @@ const SingleTweet = ({ tweet, likesForAUser }) => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [isLiked, setLiked] = useState(false);
   const [likeId, setLikeId] = useState(null);
+  const [numLikes, setNumLikes] = useState(tweet.numberOfLikes)
 
   const { LikeAtweet, deleteAlikeOnATweet } = useContext(likesContext);
   let username = localStorage.getItem("username");
@@ -49,20 +51,27 @@ const SingleTweet = ({ tweet, likesForAUser }) => {
       }
     }
   }, [likesForAUser]);
+  const { updateNumberOfLikes } = useContext(tweetContext)
 
   function handleLike() {
     if (isLiked) {
       deleteAlikeOnATweet(likeId, username);
       setLiked(false);
+      updateNumberOfLikes(tweet.id, tweet.numberOfLikes - 1)
+      setNumLikes(numLikes - 1)
     } else {
       LikeAtweet(tweet.id, username);
       setLiked(true);
+      updateNumberOfLikes(tweet.id, tweet.numberOfLikes + 1)
+      setNumLikes(numLikes + 1)
     }
   }
 
   useEffect(() => {
     setTimeLeft(timeSince(tweet.CreatedAtMs));
   }, []);
+
+
 
   return (
     <div className="tweetContainer">
@@ -88,7 +97,8 @@ const SingleTweet = ({ tweet, likesForAUser }) => {
               sx={{ fontSize: 20 }}
               style={isLiked ? { color: "red" } : { color: "gray" }}
             />
-            <div>{tweet.numberOfLikes !== 0 ? tweet.numberOfLikes : ""}</div>
+            <div>{numLikes != 0 ? numLikes : ""}</div>
+
           </div>
 
           <ShareIcon sx={{ fontSize: 18 }} style={{ color: "gray" }} />
