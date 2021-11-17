@@ -15,15 +15,13 @@ import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import { merchContext } from "../../contexts/MerchContext";
 
-
 const CreditCardPage = () => {
   const { handleChange, handleFocus, handleSubmit, values, errors } = useForm();
   let navigate = useNavigate();
   const { merchCountInCart } = useContext(merchContext);
 
-
   if (errors.message === "Payment was successful!") {
-    setTimeout(() => navigate("/products/all"), 3500)
+    setTimeout(() => navigate("/products/all"), 3500);
   }
 
   return (
@@ -35,13 +33,13 @@ const CreditCardPage = () => {
             size="large"
             aria-label="show 4 new mails"
             color="inherit"
+            sx={{ paddingTop: "20px" }}
           >
             <Badge badgeContent={merchCountInCart} color="error">
               <ShoppingCart sx={{ fontSize: 28, color: "white" }} />
             </Badge>
           </IconButton>
         </Link>
-
       </div>
       <div className="creditCardMainDiv" style={{ bgcolor: "white" }}>
         <div className="box justify-content-center align-items-center">
@@ -55,7 +53,6 @@ const CreditCardPage = () => {
               />
             </div>
             <div className="card-inputs">
-
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="rowrowrow">
                   <Form.Control
@@ -121,7 +118,6 @@ const CreditCardPage = () => {
                     Pay
                   </Button>
                 </div>
-
               </Form>
             </div>
           </div>
@@ -138,7 +134,7 @@ const CreditCardPage = () => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
