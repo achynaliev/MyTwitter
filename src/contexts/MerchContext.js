@@ -57,26 +57,19 @@ const MerchContextProvider = (props) => {
     }
   };
 
-  const editSpecificMerch = async (id, merch) => {
+  const editSpecificMerch = async (id, merch, category) => {
     try {
-      const response = await axios(APImerch + id, merch);
-      let action = {
-        type: "EDIT_SPECIFIC_MERCH",
-        payload: response.data,
-      };
-      dispatch(action);
+      const response = await axios.put(APImerch + id, merch);
+      getItemsByCategory(category)
     } catch (e) {
       console.log(e);
     }
   };
 
-  const deleteMerch = async (id) => {
+  const deleteMerch = async (id, category) => {
     try {
       const response = await axios.delete(APImerch + id);
-      let action = {
-        type: "DELETE_MERCH",
-        payload: response.data,
-      };
+      getItemsByCategory(category)
     } catch (e) {
       console.log(e);
     }
@@ -163,8 +156,6 @@ const MerchContextProvider = (props) => {
     localStorage.setItem("cart", JSON.stringify(cart));
     getCart();
   };
-
-  const getPageCount = async () => {};
 
   const getItemsByCategory = async (category) => {
     try {
