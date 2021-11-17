@@ -60,6 +60,7 @@ const LeftSideBar = () => {
     if (username) {
       let profileIMG = localStorage.getItem("profileIMG");
       let usrname = localStorage.getItem("username");
+      let admin = localStorage.getItem("admin")
       if (!profileIMG) {
         localStorage.setItem("profileIMG", username[0].imageURL);
       }
@@ -69,6 +70,9 @@ const LeftSideBar = () => {
           "following",
           JSON.stringify(username[0].following)
         );
+      }
+      if (!admin) {
+        localStorage.setItem("admin", username[0].admin)
       }
     }
   }

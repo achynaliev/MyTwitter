@@ -6,13 +6,36 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-
+import EditMerchModal from "./EditMerchModal";
 import { merchContext } from "../../contexts/MerchContext";
 import { Link } from "react-router-dom";
 
 const MerchCard = ({ item }) => {
   const { addAndDeleteMerchInCart, checkMerchInCart } =
     useContext(merchContext);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  let admin = localStorage.getItem("admin")
+  let editBtn;
+  if (admin === "true") {
+    editBtn = <Button
+      sx={{
+        fontSize: 15,
+        height: "32px",
+        marginRight: "20px",
+        marginTop: "12px",
+      }}
+      variant="contained"
+      onClick={handleOpen}
+    >
+      Edit
+    </Button>
+  } else {
+    editBtn = <div></div>
+  }
+
   return (
     <Card
       sx={{
@@ -68,7 +91,9 @@ const MerchCard = ({ item }) => {
         <Link to="/credit">
           <Button variant="contained">Buy</Button>
         </Link>
+        {editBtn}
       </CardActions>
+      <EditMerchModal item={item} handleClose={handleClose} open={open} />
     </Card>
   );
 };

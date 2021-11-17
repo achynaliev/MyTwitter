@@ -27,7 +27,6 @@ const MerchCardList = ({ setPageCount, currentPage }) => {
     } else {
       end = currentPage * 6 - 1;
     }
-
     page = merch.filter((item, index) => {
       if (index >= start && index < end) {
         return [item];

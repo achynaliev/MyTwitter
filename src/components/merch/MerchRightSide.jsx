@@ -48,29 +48,37 @@ const MerchRightSide = () => {
     }
   }
 
-  <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-    <Badge badgeContent={2} color="error">
-      <ShoppingCart />
-    </Badge>
-  </IconButton>;
+  let admin = localStorage.getItem("admin")
+  let addBtn;
+  if (admin === "true") {
+    addBtn = <Button
+      sx={{
+        fontSize: 15,
+        height: "32px",
+        marginRight: "20px",
+        marginTop: "12px",
+      }}
+      variant="contained"
+      onClick={handleOpen}
+    >
+      Add
+    </Button>
+  } else {
+    addBtn = <div></div>
+  }
+
+
 
   return (
     <div className="rightSideMerch">
       <div className="merchNavbar">
         <h2 className="MerchHeaderText">Merchandise</h2>
         <div className="m-n">
-          <Button
-            sx={{
-              fontSize: 15,
-              height: "32px",
-              marginRight: "20px",
-              marginTop: "12px",
-            }}
-            variant="contained"
-            onClick={handleOpen}
-          >
-            Add
-          </Button>
+
+          {addBtn}
+
+
+
           <Link to="/cart">
             <IconButton
               size="large"
