@@ -31,6 +31,7 @@ const EditMerchModal = ({ item, handleClose, open }) => {
   });
   const params = useParams();
 
+
   function handleChange(e) {
     let tempMyMerch = { ...myMerch, [e.target.name]: e.target.value };
     setMyMerch(tempMyMerch);

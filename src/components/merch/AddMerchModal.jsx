@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import "./merch.css";
 import { merchContext } from "../../contexts/MerchContext";
+import { useParams } from "react-router";
 
 const style = {
   position: "absolute",
@@ -21,10 +22,11 @@ const style = {
 const AddMerchModal = ({ handleClose, open }) => {
   const [myMerch, setMyMerch] = React.useState({
     title: "",
-    image: "",
+    imageURL: "",
     price: "",
     category: "",
   });
+  const params = useParams();
 
   function handleChange(e) {
     let tempMyMerch = { ...myMerch, [e.target.name]: e.target.value };
@@ -36,9 +38,10 @@ const AddMerchModal = ({ handleClose, open }) => {
     e.preventDefault();
     console.log(myMerch);
     if (myMerch.category === "") {
-      createMerch(myMerch.title, myMerch.image, myMerch.price, "t-shirt");
+      let merch = { title: myMerch.title, imageURL: myMerch.imageURL, price: myMerch.price, category: "t-shirt" }
+      createMerch(merch, params.category);
     } else {
-      createMerch(myMerch);
+      createMerch(myMerch, params.category);
     }
     handleClose();
   }
@@ -65,7 +68,7 @@ const AddMerchModal = ({ handleClose, open }) => {
 
               <label>Image: </label>
               <input
-                name="image"
+                name="imageURL"
                 type="text"
                 placeholder="add an image url"
                 onChange={(e) => handleChange(e)}
