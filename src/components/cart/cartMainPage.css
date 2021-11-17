@@ -51,4 +51,7 @@
 }
 
 @media only screen and (max-width: 475px) {
+  .cartMainPage {
+    width: 100%;
+  }
 }

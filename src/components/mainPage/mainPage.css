@@ -109,9 +109,6 @@
     margin: 0;
   }
 
-  .leftSlideBar {
-  }
-
   .mainFeedContainer {
     width: 100%;
   }
@@ -127,11 +124,15 @@
   .logoutBtn {
     display: none;
   }
+
+  .logoutBtn {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 475px) {
   .leftBar {
-    width: 10%;
+    width: 15%;
     margin: 0;
   }
 
@@ -140,7 +141,7 @@
   }
 
   .mainFeedContainer {
-    width: 90%;
+    width: 85%;
   }
 
   .main-page-structure {
@@ -159,8 +160,149 @@
   .leftListIcons {
     margin-left: 10px;
   }
+}
 
-  .logoutBtn {
+@media only screen and (max-width: 600px) {
+  .leftBar {
+    width: 15%;
+    margin: 0;
+  }
+
+  .rightSideBar {
+    display: none;
+  }
+
+  .mainFeedContainer {
+    width: 85%;
+  }
+
+  .main-page-structure {
+    width: 100%;
+    margin: 0;
+  }
+
+  .leftSideListText {
+    display: none;
+  }
+
+  .tweet-left-side {
+    display: none;
+  }
+
+  .leftListIcons {
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .leftBar {
+    width: 15%;
+    margin: 0;
+  }
+
+  .rightSideBar {
+    display: none;
+  }
+
+  .mainFeedContainer {
+    width: 75%;
+  }
+
+  .main-page-structure {
+    width: 100%;
+    margin: 0;
+  }
+
+  .tweet-left-side {
+    display: none;
+  }
+
+  .leftListIcons {
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .leftBar {
+    width: 15%;
+    margin: 0;
+  }
+
+  .mainFeedContainer {
+    width: 75%;
+  }
+
+  .main-page-structure {
+    width: 100%;
+    margin: 0;
+  }
+
+  .tweet-left-side {
+    display: none;
+  }
+
+  .leftListIcons {
+  }
+
+  .leftSideListText {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .leftBar {
+    width: 15%;
+    margin: 0;
+  }
+
+  .mainFeedContainer {
+    width: 75%;
+  }
+
+  .main-page-structure {
+    width: 100%;
+    margin: 0;
+  }
+
+  .tweet-left-side {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .leftBar {
+    width: 15%;
+    margin: 0;
+  }
+
+  .mainFeedContainer {
+    width: 75%;
+  }
+
+  .main-page-structure {
+    width: 90%;
+    margin: auto;
+  }
+
+  .tweet-left-side {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .leftBar {
+    width: 15%;
+    margin: 0;
+  }
+
+  .mainFeedContainer {
+    width: 75%;
+  }
+
+  .main-page-structure {
+    width: 80%;
+    margin: auto;
+  }
+
+  .tweet-left-side {
     display: none;
   }
 }
