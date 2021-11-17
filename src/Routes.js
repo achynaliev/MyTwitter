@@ -9,25 +9,31 @@ import AuthPage from "./pages/AuthPage";
 import MerchPage from "./pages/MerchPage";
 import CartMainPage from "./components/cart/CartMainPage";
 import CreditMainPage from "./components/credit/CreditMainPage";
+import LikesContextProvider from "./contexts/LikesContext";
 
 const TweeterRoutes = () => {
   return (
     <UserContextProvider>
       <AuthContextProvider>
         <TweetContextProvider>
-          <MerchContextProvider>
-            <BrowserRouter>
-              <Routes>
-                <Route exact path="/" element={<MainPage />} />
-                <Route exact path="/explore" element={<MainPage />} />
-                <Route exact path="/auth" element={<AuthPage />} />
-                <Route exact path="/products/:category" element={<MerchPage />} />
-                <Route exact path="/cart" element={<CartMainPage />} />
-                <Route exact path="/credit" element={<CreditMainPage />} />
-
-              </Routes>
-            </BrowserRouter>
-          </MerchContextProvider>
+          <LikesContextProvider>
+            <MerchContextProvider>
+              <BrowserRouter>
+                <Routes>
+                  <Route exact path="/" element={<MainPage />} />
+                  <Route exact path="/explore" element={<MainPage />} />
+                  <Route exact path="/auth" element={<AuthPage />} />
+                  <Route
+                    exact
+                    path="/products/:category"
+                    element={<MerchPage />}
+                  />
+                  <Route exact path="/cart" element={<CartMainPage />} />
+                  <Route exact path="/credit" element={<CreditMainPage />} />
+                </Routes>
+              </BrowserRouter>
+            </MerchContextProvider>
+          </LikesContextProvider>
         </TweetContextProvider>
       </AuthContextProvider>
     </UserContextProvider>

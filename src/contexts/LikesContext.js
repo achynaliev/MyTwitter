@@ -4,8 +4,9 @@ import { APIlikes } from "../helpers/config";
 
 export const likesContext = React.createContext();
 const INIT_STATE = {
-  likesForAUser: [],
+  likesForAUser: null,
   NumberOfLikesForATweet: [],
+  like: null,
 };
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
@@ -19,6 +20,11 @@ const reducer = (state = INIT_STATE, action) => {
         ...state,
         NumberOfLikesForATweet: action.payload,
       };
+    case "LIKE_FOR_A_TWEET":
+      return {
+        ...state,
+        like: action.payload,
+      };
     default:
       return state;
   }
@@ -29,15 +35,21 @@ const LikesContextProvider = (props) => {
 
   const LikeAtweet = async (tweetId, username) => {
     try {
-      await axios.post(APIlikes, { tweetId, username });
+      let result = await axios.post(APIlikes, { tweetId, username });
+      dispatch({
+        type: "LIKE_FOR_A_TWEET",
+        payload: result.data,
+      });
+      getLikesForAUser(username);
     } catch (e) {
       console.log(e);
     }
   };
 
-  const deleteAlikeOnATweet = async (likeId) => {
+  const deleteAlikeOnATweet = async (likeId, username) => {
     try {
       await axios.delete(APIlikes + likeId);
+      getLikesForAUser(username);
     } catch (e) {
       console.log(e);
     }
@@ -47,7 +59,7 @@ const LikesContextProvider = (props) => {
     try {
       let result = await axios.get(APIlikes + "?username=" + username);
       dispatch({
-        case: "LIKES_FOR_A_USER",
+        type: "LIKES_FOR_A_USER",
         payload: result.data,
       });
     } catch (e) {
@@ -56,7 +68,15 @@ const LikesContextProvider = (props) => {
   };
 
   return (
-    <likesContext.Provider value={{ LikeAtweet }}>
+    <likesContext.Provider
+      value={{
+        LikeAtweet,
+        deleteAlikeOnATweet,
+        getLikesForAUser,
+        likesForAUser: state.likesForAUser,
+        like: state.like,
+      }}
+    >
       {props.children}
     </likesContext.Provider>
   );

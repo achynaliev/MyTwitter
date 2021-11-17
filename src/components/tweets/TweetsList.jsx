@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { tweetContext } from "../../contexts/TweetContext";
 import { useLocation } from "react-router";
 import SingleTweet from "./SingleTweet";
+import { likesContext } from "../../contexts/LikesContext";
 
 const TweetsList = () => {
   const {
@@ -11,11 +12,15 @@ const TweetsList = () => {
     exploreFeedTweets,
     searchResults,
   } = useContext(tweetContext);
+  const { likesForAUser, getLikesForAUser } = useContext(likesContext);
   let location = useLocation();
 
   const [mainTweets, setMainTweets] = useState(mainFeedTweets);
   const [exploreTweets, setExploreTweets] = useState(exploreFeedTweets);
   const [searchResultsState, setSearchResultsState] = useState(searchResults);
+
+  let username = localStorage.getItem("username");
+  useEffect(username ? () => getLikesForAUser(username) : null, []);
 
   let explore;
   let following = localStorage.getItem("following");
@@ -58,12 +63,17 @@ const TweetsList = () => {
     setExploreTweets(arr);
   }, [exploreFeedTweets]);
 
-  if (explore && exploreTweets.length > 0) {
+  if (explore && exploreTweets.length > 0 && likesForAUser != null) {
+    console.log(likesForAUser);
     if (searchResultsState.length > 0) {
       return (
         <div>
           {searchResultsState.map((tweet) => (
-            <SingleTweet key={tweet.id} tweet={tweet} />
+            <SingleTweet
+              likesForAUser={likesForAUser}
+              key={tweet.id}
+              tweet={tweet}
+            />
           ))}
         </div>
       );
@@ -71,7 +81,11 @@ const TweetsList = () => {
       return (
         <div>
           {exploreTweets.map((tweet) => (
-            <SingleTweet key={tweet.id} tweet={tweet} />
+            <SingleTweet
+              likesForAUser={likesForAUser}
+              key={tweet.id}
+              tweet={tweet}
+            />
           ))}
         </div>
       );

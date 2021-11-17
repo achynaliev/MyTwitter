@@ -107,7 +107,6 @@ const TweetContextProvider = (props) => {
         type: "EXPLORE_FEED_TWEETS",
         payload: result.data,
       });
-      console.log("hz why");
     } catch (e) {
       console.log(e);
     }
