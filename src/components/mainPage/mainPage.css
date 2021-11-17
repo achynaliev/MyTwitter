@@ -1,5 +1,5 @@
 .main-page-structure {
-  width: 80%;
+  width: 78%;
   height: 100%;
   margin: auto;
   display: flex;
@@ -10,7 +10,7 @@
 .mainFeedContainer {
   margin-top: 5px;
   margin-left: 20px;
-  width: 42%;
+  width: 40%;
   height: 100%;
   border-left: 0.05px solid rgb(117, 117, 117);
   border-right: 0.05px solid rgb(117, 117, 117);
@@ -27,7 +27,7 @@
   background-color: black;
 }
 
-.homeHeader>h1 {
+.homeHeader > h1 {
   font-size: 30px;
   margin-left: 10px;
   font-weight: 300;
@@ -47,8 +47,6 @@
 .leftSlideBar {
   display: flex;
   flex-direction: column;
-  margin: 25px;
-  padding: 100px;
 }
 
 .left-text {
@@ -75,8 +73,9 @@
 
 .leftSideListText {
   text-align: start;
-  font-size: 22px;
+  font-size: 23px;
   font-weight: 400;
+  padding-top: 3px;
 }
 
 .leftListIcons {
@@ -98,4 +97,70 @@
 
 .feedTopIcon {
   margin-right: 10px;
+}
+
+@media only screen and (max-width: 375px) {
+  .rightSideBar {
+    display: none;
+  }
+
+  .leftBar {
+    width: 10%;
+    margin: 0;
+  }
+
+  .leftSlideBar {
+  }
+
+  .mainFeedContainer {
+    width: 100%;
+  }
+
+  .main-page-structure {
+    width: 90%;
+  }
+
+  .leftSideListText {
+    display: none;
+  }
+
+  .logoutBtn {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  .leftBar {
+    width: 10%;
+    margin: 0;
+  }
+
+  .rightSideBar {
+    display: none;
+  }
+
+  .mainFeedContainer {
+    width: 90%;
+  }
+
+  .main-page-structure {
+    width: 100%;
+    margin: 0;
+  }
+
+  .leftSideListText {
+    display: none;
+  }
+
+  .tweet-left-side {
+    display: none;
+  }
+
+  .leftListIcons {
+    margin-left: 10px;
+  }
+
+  .logoutBtn {
+    display: none;
+  }
 }

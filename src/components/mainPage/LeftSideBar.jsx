@@ -60,7 +60,7 @@ const LeftSideBar = () => {
     if (username) {
       let profileIMG = localStorage.getItem("profileIMG");
       let usrname = localStorage.getItem("username");
-      let admin = localStorage.getItem("admin")
+      let admin = localStorage.getItem("admin");
       if (!profileIMG) {
         localStorage.setItem("profileIMG", username[0].imageURL);
       }
@@ -72,13 +72,13 @@ const LeftSideBar = () => {
         );
       }
       if (!admin) {
-        localStorage.setItem("admin", username[0].admin)
+        localStorage.setItem("admin", username[0].admin);
       }
     }
   }
-  setTimeout(userLogedIn, 1500);
-  setTimeout(() => getUsr(), 1500);
-  setTimeout(() => setusr(), 2000);
+  setTimeout(userLogedIn, 1800);
+  setTimeout(() => getUsr(), 1800);
+  setTimeout(() => setusr(), 2200);
 
   return (
     <div className="leftBar">
@@ -89,40 +89,52 @@ const LeftSideBar = () => {
         <div className="left-text">
           <Link to="/" style={{ textDecoration: "none" }}>
             <div className="l-t">
-              <HomeIcon className="leftListIcons" />
+              <HomeIcon sx={{ fontSize: "30px" }} className="leftListIcons" />
               <h5 className="leftSideListText">Home</h5>
             </div>
           </Link>
           <Link to="/explore" style={{ textDecoration: "none" }}>
             <div className="l-t">
-              <Grid3x3Icon className="leftListIcons" />
+              <Grid3x3Icon
+                sx={{ fontSize: "30px" }}
+                className="leftListIcons"
+              />
               <h5 className="leftSideListText">Explore</h5>
             </div>
           </Link>
           <Link to="/#" style={{ textDecoration: "none" }}>
             <div className="l-t">
-              <MailOutlineIcon className="leftListIcons" />
+              <MailOutlineIcon
+                sx={{ fontSize: "30px" }}
+                className="leftListIcons"
+              />
               <h5 className="leftSideListText">Messages</h5>
             </div>
           </Link>
           <Link to="#" style={{ textDecoration: "none" }}>
             <div className="l-t">
-              <PersonOutlineIcon className="leftListIcons" />
+              <PersonOutlineIcon
+                sx={{ fontSize: "30px" }}
+                className="leftListIcons"
+              />
               <h5 className="leftSideListText">Profile</h5>
             </div>
           </Link>
           <Link to="/products/all" style={{ textDecoration: "none" }}>
             <div className="l-t">
-              <ProductionQuantityLimitsIcon className="leftListIcons" />
+              <ProductionQuantityLimitsIcon
+                sx={{ fontSize: "30px" }}
+                className="leftListIcons"
+              />
               <h5 className="leftSideListText">Products</h5>
             </div>
           </Link>
         </div>
-        <div className="btn-button">
+        <div className="btn-button tweet-left-side">
           <Button variant="contained">Tweet</Button>
         </div>
       </div>
-      {logout}
+      <div className="logoutBtn">{logout}</div>
     </div>
   );
 };

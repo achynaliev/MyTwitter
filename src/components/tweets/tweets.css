@@ -52,6 +52,7 @@
   padding-top: 15px;
   display: flex;
   justify-content: space-between;
+  width: 95%;
 }
 
 .lowerInputLogos {
@@ -84,8 +85,7 @@
 
 .tweetFooter {
   padding-top: 15px;
-  width: 100%;
-  margin: auto;
+  width: 95%;
   display: flex;
   justify-content: space-between;
 }
