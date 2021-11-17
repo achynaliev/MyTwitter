@@ -97,7 +97,7 @@ const TweetContextProvider = (props) => {
           type: "MAIN_FEED_TWEETS",
           payload: result.data,
         });
-      } catch (e) {}
+      } catch (e) { }
     });
   };
 
@@ -133,7 +133,7 @@ const TweetContextProvider = (props) => {
           type: "SEARCH_RESULTS",
           payload: result,
         });
-      } catch (e) {}
+      } catch (e) { }
     } else {
       dispatch({
         type: "SEARCH_RESULTS",
@@ -150,14 +150,6 @@ const TweetContextProvider = (props) => {
         type: "SPECIFIC_USER_TWEETS",
         payload: result.data,
       });
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const updateLikesCountForATweet = async (tweetId, likesCount) => {
-    try {
-      await axios.patch(APItweets + tweetId, { likesCount });
     } catch (e) {
       console.log(e);
     }
@@ -185,6 +177,15 @@ const TweetContextProvider = (props) => {
     }
   };
 
+  const updateNumberOfLikes = async (tweetId, numberOfLikes) => {
+    try {
+      await axios.patch(APItweets + tweetId, { numberOfLikes })
+    } catch (e) {
+      console.log(e)
+    }
+
+  }
+
   return (
     <tweetContext.Provider
       value={{
@@ -195,7 +196,7 @@ const TweetContextProvider = (props) => {
         deleteATweet,
         getASpecificTweet,
         searchForTweetsAndUsers,
-        updateLikesCountForATweet,
+        updateNumberOfLikes,
         searchResults: state.searchResults,
         mainFeedTweets: state.mainFeedTweets,
         exploreFeedTweets: state.exploreFeedTweets,
