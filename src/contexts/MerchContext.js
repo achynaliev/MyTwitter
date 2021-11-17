@@ -34,7 +34,7 @@ const MerchContextProvider = (props) => {
     try {
       const response = await axios.post(APImerch, merch);
 
-      getItemsByCategory(category)
+      getItemsByCategory(category);
     } catch (e) {
       console.log(e);
     }
@@ -88,13 +88,42 @@ const MerchContextProvider = (props) => {
     let checkArr = cart.merch.filter((item) => {
       return item.merch.id === merch.id;
     });
-    console.log(checkArr);
     if (checkArr.length === 0) {
       cart.merch.push(product);
     } else {
       cart.merch = cart.merch.filter((item) => {
         return item.merch.id !== merch.id;
       });
+    }
+
+    cart.totalPrice = calcTotalPrice(cart);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    let action = {
+      type: "ADD_AND_DELETE_MERCH_IN_CART",
+      payload: cart.merch.length,
+    };
+    dispatch(action);
+  };
+
+  const addAndDontDeleteMerchInCart = (merch) => {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if (!cart) {
+      cart = {
+        merch: [],
+        totalPrice: 0,
+      };
+    }
+    let product = {
+      merch,
+      count: 1,
+      subPrice: 0,
+    };
+    product.subPrice = calcSubPrice(product);
+    let checkArr = cart.merch.filter((item) => {
+      return item.merch.id === merch.id;
+    });
+    if (checkArr.length === 0) {
+      cart.merch.push(product);
     }
 
     cart.totalPrice = calcTotalPrice(cart);
@@ -206,16 +235,17 @@ const MerchContextProvider = (props) => {
   return (
     <merchContext.Provider
       value={{
-        createMerch: createMerch,
-        getAllMerch: getAllMerch,
-        editSpecificMerch: editSpecificMerch,
-        deleteMerch: deleteMerch,
-        addAndDeleteMerchInCart: addAndDeleteMerchInCart,
-        checkMerchInCart: checkMerchInCart,
+        createMerch,
+        getAllMerch,
+        editSpecificMerch,
+        deleteMerch,
+        addAndDeleteMerchInCart,
+        checkMerchInCart,
         getCart: getCart,
-        changeCountMerch: changeCountMerch,
-        getItemsByCategory: getItemsByCategory,
-        deleteMerchInCart: deleteMerchInCart,
+        changeCountMerch,
+        getItemsByCategory,
+        deleteMerchInCart,
+        addAndDontDeleteMerchInCart,
         merchCountInCart: state.merchCountInCart,
         merch: state.merch,
         cart: state.cart,

@@ -8,14 +8,19 @@ import Typography from "@mui/material/Typography";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import EditMerchModal from "./EditMerchModal";
 import { merchContext } from "../../contexts/MerchContext";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MerchCard = ({ item }) => {
-  const { addAndDeleteMerchInCart, checkMerchInCart } =
-    useContext(merchContext);
+  const {
+    addAndDeleteMerchInCart,
+    checkMerchInCart,
+    addAndDontDeleteMerchInCart,
+  } = useContext(merchContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const navigate = useNavigate();
 
   let admin = localStorage.getItem("admin");
   let editBtn;
@@ -27,6 +32,11 @@ const MerchCard = ({ item }) => {
     );
   } else {
     editBtn = <div></div>;
+  }
+
+  function handleABuy() {
+    addAndDontDeleteMerchInCart(item);
+    navigate("/cart");
   }
 
   return (
@@ -81,11 +91,13 @@ const MerchCard = ({ item }) => {
             color={checkMerchInCart(item.id) ? "error" : "white"}
           />
         </Button>
-        <Link to="/credit">
-          <Button sx={{ marginLeft: "10px" }} variant="contained">
-            Buy
-          </Button>
-        </Link>
+        <Button
+          onClick={() => handleABuy()}
+          sx={{ marginLeft: "10px" }}
+          variant="contained"
+        >
+          Buy
+        </Button>
         {editBtn}
       </CardActions>
       <EditMerchModal item={item} handleClose={handleClose} open={open} />

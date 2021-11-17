@@ -95,7 +95,9 @@ const TweetsList = () => {
   } else if (mainTweets.length > 0) {
     return <div>main</div>;
   } else {
-    return <div>else</div>;
+    return (
+      <div style={{ fontSize: "26px", color: "white" }}>START YOUR DB.JSON</div>
+    );
   }
 };
 
