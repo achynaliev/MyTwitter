@@ -32,7 +32,6 @@ const AuthContextProvider = (props) => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log(user);
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
@@ -55,7 +54,8 @@ const AuthContextProvider = (props) => {
   const createUserWithEmailAndPasswordHandler = async (
     email,
     password,
-    username
+    username,
+    imageURL
   ) => {
     try {
       const { user } = await createUserWithEmailAndPassword(
@@ -63,7 +63,7 @@ const AuthContextProvider = (props) => {
         email,
         password
       );
-      await createAUser(email, username, user.uid);
+      await createAUser(email, username, user.uid, imageURL);
     } catch (error) {
       console.log(error);
       //setError("Error Signing up with email and password");
@@ -84,16 +84,9 @@ const AuthContextProvider = (props) => {
       });
   };
 
-  const loginUserWithEmail = (email, password) => {
+  const loginUserWithEmail = async (email, password) => {
     try {
-      signInWithEmailAndPassword(auth, email, password).then(
-        (userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          console.log(user);
-          // ...
-        }
-      );
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (e) {
       console.log(e);
     }

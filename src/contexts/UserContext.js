@@ -19,12 +19,13 @@ const reducer = (state = INIT_STATE, action) => {
 const UserContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createAUser = async (email, username, uid) => {
+  const createAUser = async (email, username, uid, imageURL) => {
     let user = {
       username,
       email,
       uid,
-      following: [],
+      imageURL,
+      following: [username],
     };
     try {
       await axios.post(APIusers, user);

@@ -6,6 +6,7 @@ export const tweetContext = React.createContext();
 const INIT_STATE = {
   mainFeedTweets: [],
   exploreFeedTweets: [],
+  searchResults: [],
   specific_user_tweets: [],
   specific_tweet: null,
 };
@@ -18,14 +19,25 @@ const reducer = (state = INIT_STATE, action) => {
         mainFeedTweets: state.mainFeedTweets.concat(action.payload),
       };
     case "EXPLORE_FEED_TWEETS":
-      return { ...state, exploreFeedTweets: action.payload };
+      return {
+        ...state,
+        exploreFeedTweets: action.payload,
+      };
     case "MAIN_FEED_TWEETS_WIPE_CLEAN":
       return {
         ...state,
         mainFeedTweets: [],
       };
+    case "SEARCH_RESULTS":
+      return {
+        ...state,
+        searchResults: action.payload,
+      };
     case "SPECIFIC_USER_TWEETS":
-      return { ...state, specific_user_tweets: action.payload };
+      return {
+        ...state,
+        specific_user_tweets: action.payload,
+      };
     case "SPECIFIC_TWEET":
       return {
         ...state,
@@ -39,15 +51,34 @@ const reducer = (state = INIT_STATE, action) => {
 const TweetContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createATweet = async (tweet, imgURL, uid, username) => {
+  const createATweet = async (
+    tweet,
+    imgURL,
+    uid,
+    username,
+    createdAt,
+    CreatedAtMs,
+    explore,
+    following,
+    ownerImgURl
+  ) => {
     let tw = {
       tweet,
       imgURL,
       ownerUID: uid,
       ownerUsername: username,
+      ownerImgURl,
+      numberOfLikes: 0,
+      createdAt,
+      CreatedAtMs,
     };
     try {
       await axios.post(APItweets, tw);
+      if (explore) {
+        getTweetsForExploreFeed();
+      } else {
+        getTweetsForMainFeed(following);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -66,7 +97,7 @@ const TweetContextProvider = (props) => {
           type: "MAIN_FEED_TWEETS",
           payload: result.data,
         });
-      } catch (e) {}
+      } catch (e) { }
     });
   };
 
@@ -79,6 +110,35 @@ const TweetContextProvider = (props) => {
       });
     } catch (e) {
       console.log(e);
+    }
+  };
+
+  const searchForTweetsAndUsers = async (searchTerm) => {
+    if (searchTerm.length > 2) {
+      try {
+        let { data } = await axios(APItweets + "?q=" + searchTerm);
+        let reg = new RegExp(searchTerm);
+        let result = data.filter((twt) => {
+          if ("tweet" in twt) {
+            if (
+              twt.tweet.toLowerCase().match(reg) ||
+              twt.ownerUsername.toLowerCase().match(reg)
+            ) {
+              return twt.tweet;
+            }
+          }
+        });
+        console.log(result);
+        dispatch({
+          type: "SEARCH_RESULTS",
+          payload: result,
+        });
+      } catch (e) { }
+    } else {
+      dispatch({
+        type: "SEARCH_RESULTS",
+        payload: [],
+      });
     }
   };
 
@@ -117,6 +177,15 @@ const TweetContextProvider = (props) => {
     }
   };
 
+  const updateNumberOfLikes = async (tweetId, numberOfLikes) => {
+    try {
+      await axios.patch(APItweets + tweetId, { numberOfLikes })
+    } catch (e) {
+      console.log(e)
+    }
+
+  }
+
   return (
     <tweetContext.Provider
       value={{
@@ -126,6 +195,9 @@ const TweetContextProvider = (props) => {
         getTweetsForSpecificUser,
         deleteATweet,
         getASpecificTweet,
+        searchForTweetsAndUsers,
+        updateNumberOfLikes,
+        searchResults: state.searchResults,
         mainFeedTweets: state.mainFeedTweets,
         exploreFeedTweets: state.exploreFeedTweets,
         specific_tweet: state.specific_tweet,

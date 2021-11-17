@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import "./mainPage.css";
 import HomeIcon from "@mui/icons-material/Home";
@@ -22,16 +22,13 @@ const LeftSideBar = () => {
   }
 
   let uid = localStorage.getItem("uid");
-  let usrname = localStorage.getItem("username");
-
-  useEffect(() => (uid ? getAUser(uid) : null), []);
 
   let logout;
   if (user) {
     if (!uid) {
       localStorage.setItem("uid", user.uid);
-      console.log(uid);
     }
+
     logout = (
       <Button variant="contained" onClick={() => handleLogOut()}>
         Log Out
@@ -45,16 +42,6 @@ const LeftSideBar = () => {
     );
   }
 
-  let hz;
-  if (username) {
-    if (!usrname) {
-      localStorage.setItem("username", username[0].username);
-    }
-    hz = <br style={{ display: "none" }}></br>;
-  } else {
-    hz = <div style={{ display: "none" }}></div>;
-  }
-
   function userLogedIn() {
     uid = localStorage.getItem("uid");
     if (!uid) {
@@ -62,43 +49,72 @@ const LeftSideBar = () => {
     }
   }
 
+  function getUsr() {
+    let usrname = localStorage.getItem("username");
+    if (uid && !usrname) {
+      getAUser(uid);
+    }
+  }
+
+  function setusr() {
+    if (username) {
+      let profileIMG = localStorage.getItem("profileIMG");
+      let usrname = localStorage.getItem("username");
+      let admin = localStorage.getItem("admin")
+      if (!profileIMG) {
+        localStorage.setItem("profileIMG", username[0].imageURL);
+      }
+      if (!usrname) {
+        localStorage.setItem("username", username[0].username);
+        localStorage.setItem(
+          "following",
+          JSON.stringify(username[0].following)
+        );
+      }
+      if (!admin) {
+        localStorage.setItem("admin", username[0].admin)
+      }
+    }
+  }
   setTimeout(userLogedIn, 1500);
+  setTimeout(() => getUsr(), 1500);
+  setTimeout(() => setusr(), 2000);
 
   return (
     <div className="leftBar">
       <div className="leftSideBar">
         <div>
-          <TwitterIcon style={{ color: "white" }} />
+          <TwitterIcon style={{ color: "white" }} sx={{ fontSize: 50 }} />
         </div>
         <div className="left-text">
           <Link to="/" style={{ textDecoration: "none" }}>
             <div className="l-t">
-              <HomeIcon />
-              <h5>Home</h5>
+              <HomeIcon className="leftListIcons" />
+              <h5 className="leftSideListText">Home</h5>
             </div>
           </Link>
           <Link to="/explore" style={{ textDecoration: "none" }}>
             <div className="l-t">
-              <Grid3x3Icon />
-              <h5>Explore</h5>
+              <Grid3x3Icon className="leftListIcons" />
+              <h5 className="leftSideListText">Explore</h5>
             </div>
           </Link>
-          <Link to="/messages" style={{ textDecoration: "none" }}>
+          <Link to="/#" style={{ textDecoration: "none" }}>
             <div className="l-t">
-              <MailOutlineIcon />
-              <h5>Messages</h5>
+              <MailOutlineIcon className="leftListIcons" />
+              <h5 className="leftSideListText">Messages</h5>
             </div>
           </Link>
-          <Link to="profile" style={{ textDecoration: "none" }}>
+          <Link to="#" style={{ textDecoration: "none" }}>
             <div className="l-t">
-              <PersonOutlineIcon />
-              <h5>Profile</h5>
+              <PersonOutlineIcon className="leftListIcons" />
+              <h5 className="leftSideListText">Profile</h5>
             </div>
           </Link>
-          <Link to="products" style={{ textDecoration: "none" }}>
+          <Link to="/products/all" style={{ textDecoration: "none" }}>
             <div className="l-t">
-              <ProductionQuantityLimitsIcon />
-              <h5>Products</h5>
+              <ProductionQuantityLimitsIcon className="leftListIcons" />
+              <h5 className="leftSideListText">Products</h5>
             </div>
           </Link>
         </div>
@@ -107,7 +123,6 @@ const LeftSideBar = () => {
         </div>
       </div>
       {logout}
-      {hz}
     </div>
   );
 };

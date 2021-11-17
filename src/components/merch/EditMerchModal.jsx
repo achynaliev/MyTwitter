@@ -5,44 +5,49 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import "./merch.css";
 import { merchContext } from "../../contexts/MerchContext";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
+import { display } from "@mui/system";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 340,
   bgcolor: "#16161D",
   border: "1px solid lightgrey",
   boxShadow: 24,
   p: 4,
 };
 
-const AddMerchModal = ({ handleClose, open }) => {
+const EditMerchModal = ({ item, handleClose, open }) => {
+  const { editSpecificMerch, deleteMerch, deleteMerchInCart } =
+    React.useContext(merchContext);
   const [myMerch, setMyMerch] = React.useState({
-    title: "",
-    imageURL: "",
-    price: "",
-    category: "",
+    title: item.title,
+    imageURL: item.imageURL,
+    price: item.price,
+    category: item.category,
   });
   const params = useParams();
+
 
   function handleChange(e) {
     let tempMyMerch = { ...myMerch, [e.target.name]: e.target.value };
     setMyMerch(tempMyMerch);
   }
-  const { createMerch } = React.useContext(merchContext);
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(myMerch);
-    if (myMerch.category === "") {
-      let merch = { title: myMerch.title, imageURL: myMerch.imageURL, price: myMerch.price, category: "t-shirt" }
-      createMerch(merch, params.category);
-    } else {
-      createMerch(myMerch, params.category);
-    }
+    deleteMerchInCart(item);
+    editSpecificMerch(item.id, myMerch, params.category);
+    handleClose();
+  }
+
+  function handleDelete(e) {
+    e.preventDefault();
+    deleteMerchInCart(item);
+    deleteMerch(item.id, params.category);
     handleClose();
   }
 
@@ -59,17 +64,22 @@ const AddMerchModal = ({ handleClose, open }) => {
             <form className="form">
               <label color="white">Title: </label>
               <input
-                sx={{ bgcolor: "rgb(43, 43, 43)", color: "white" }}
+                sx={{
+                  bgcolor: "rgb(43, 43, 43)",
+                  color: "white",
+                }}
                 name="title"
                 type="text"
+                value={myMerch.title}
                 placeholder="add a title"
                 onChange={(e) => handleChange(e)}
               />
 
               <label>Image: </label>
               <input
-                name="imageURL"
+                name="image"
                 type="text"
+                value={myMerch.imageURL}
                 placeholder="add an image url"
                 onChange={(e) => handleChange(e)}
               />
@@ -78,6 +88,7 @@ const AddMerchModal = ({ handleClose, open }) => {
               <input
                 name="price"
                 type="number"
+                value={myMerch.price}
                 placeholder="add a price"
                 onChange={(e) => handleChange(e)}
               />
@@ -86,6 +97,7 @@ const AddMerchModal = ({ handleClose, open }) => {
               <select
                 id="category"
                 name="category"
+                value={myMerch.category}
                 onChange={(e) => handleChange(e)}
               >
                 <option value="t-shirt">T-Shirt</option>
@@ -93,7 +105,13 @@ const AddMerchModal = ({ handleClose, open }) => {
                 <option value="scarf">Scarf</option>
               </select>
             </form>
-            <div style={{ paddingTop: "15px" }}>
+            <div
+              style={{
+                paddingTop: "15px",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
               <Button
                 className="btnAddProduct"
                 variant="contained"
@@ -101,7 +119,10 @@ const AddMerchModal = ({ handleClose, open }) => {
                 type="submit"
                 onClick={(e) => handleSubmit(e)}
               >
-                Add Product
+                Save changes
+              </Button>
+              <Button variant="contained" onClick={(e) => handleDelete(e)}>
+                Delete
               </Button>
             </div>
           </Typography>
@@ -111,4 +132,4 @@ const AddMerchModal = ({ handleClose, open }) => {
   );
 };
 
-export default AddMerchModal;
+export default EditMerchModal;
