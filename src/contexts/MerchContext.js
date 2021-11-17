@@ -59,8 +59,8 @@ const MerchContextProvider = (props) => {
 
   const editSpecificMerch = async (id, merch, category) => {
     try {
-      const response = await axios.put(APImerch + id, merch);
-      getItemsByCategory(category)
+      await axios.put(APImerch + id, merch);
+      getItemsByCategory(category);
     } catch (e) {
       console.log(e);
     }
@@ -68,8 +68,8 @@ const MerchContextProvider = (props) => {
 
   const deleteMerch = async (id, category) => {
     try {
-      const response = await axios.delete(APImerch + id);
-      getItemsByCategory(category)
+      await axios.delete(APImerch + id);
+      getItemsByCategory(category);
     } catch (e) {
       console.log(e);
     }
@@ -96,6 +96,38 @@ const MerchContextProvider = (props) => {
     if (checkArr.length === 0) {
       cart.merch.push(product);
     } else {
+      cart.merch = cart.merch.filter((item) => {
+        return item.merch.id !== merch.id;
+      });
+    }
+
+    cart.totalPrice = calcTotalPrice(cart);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    let action = {
+      type: "ADD_AND_DELETE_MERCH_IN_CART",
+      payload: cart.merch.length,
+    };
+    dispatch(action);
+  };
+
+  const deleteMerchInCart = (merch) => {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if (!cart) {
+      cart = {
+        merch: [],
+        totalPrice: 0,
+      };
+    }
+    let product = {
+      merch,
+      count: 1,
+      subPrice: 0,
+    };
+    product.subPrice = calcSubPrice(product);
+    let checkArr = cart.merch.filter((item) => {
+      return item.merch.id === merch.id;
+    });
+    if (checkArr.length !== 0) {
       cart.merch = cart.merch.filter((item) => {
         return item.merch.id !== merch.id;
       });
@@ -187,10 +219,10 @@ const MerchContextProvider = (props) => {
         getCart: getCart,
         changeCountMerch: changeCountMerch,
         getItemsByCategory: getItemsByCategory,
+        deleteMerchInCart: deleteMerchInCart,
         merchCountInCart: state.merchCountInCart,
         merch: state.merch,
         cart: state.cart,
-
       }}
     >
       {props.children}

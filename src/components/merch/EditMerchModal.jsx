@@ -21,7 +21,7 @@ const style = {
 };
 
 const EditMerchModal = ({ item, handleClose, open }) => {
-  const { editSpecificMerch, deleteMerch, getItemsByCategory } =
+  const { editSpecificMerch, deleteMerch, deleteMerchInCart } =
     React.useContext(merchContext);
   const [myMerch, setMyMerch] = React.useState({
     title: item.title,
@@ -38,12 +38,14 @@ const EditMerchModal = ({ item, handleClose, open }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    deleteMerchInCart(item);
     editSpecificMerch(item.id, myMerch, params.category);
     handleClose();
   }
 
   function handleDelete(e) {
     e.preventDefault();
+    deleteMerchInCart(item);
     deleteMerch(item.id, params.category);
     handleClose();
   }
