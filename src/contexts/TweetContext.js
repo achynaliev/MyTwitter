@@ -68,6 +68,7 @@ const TweetContextProvider = (props) => {
       ownerUID: uid,
       ownerUsername: username,
       ownerImgURl,
+      numberOfLikes: 0,
       createdAt,
       CreatedAtMs,
     };

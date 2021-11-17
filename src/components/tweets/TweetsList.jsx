@@ -22,6 +22,8 @@ const TweetsList = () => {
   let username = localStorage.getItem("username");
   useEffect(username ? () => getLikesForAUser(username) : null, []);
 
+  useEffect(() => null, [likesForAUser]);
+
   let explore;
   let following = localStorage.getItem("following");
   if (following) {

@@ -48,7 +48,7 @@ const SingleTweet = ({ tweet, likesForAUser }) => {
         setLikeId(likesForAUser[i].id);
       }
     }
-  }, []);
+  }, [likesForAUser]);
 
   function handleLike() {
     if (isLiked) {
@@ -82,11 +82,15 @@ const SingleTweet = ({ tweet, likesForAUser }) => {
             style={{ color: "gray" }}
           />
           <ReplayIcon sx={{ fontSize: 20 }} style={{ color: "gray" }} />
-          <FavoriteBorderIcon
-            onClick={handleLike}
-            sx={{ fontSize: 20 }}
-            style={isLiked ? { color: "red" } : { color: "gray" }}
-          />
+          <div>
+            <FavoriteBorderIcon
+              onClick={handleLike}
+              sx={{ fontSize: 20 }}
+              style={isLiked ? { color: "red" } : { color: "gray" }}
+            />
+            <div>{tweet.numberOfLikes !== 0 ? tweet.numberOfLikes : ""}</div>
+          </div>
+
           <ShareIcon sx={{ fontSize: 18 }} style={{ color: "gray" }} />
         </div>
       </div>
