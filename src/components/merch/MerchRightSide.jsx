@@ -48,36 +48,33 @@ const MerchRightSide = () => {
     }
   }
 
-  let admin = localStorage.getItem("admin")
+  let admin = localStorage.getItem("admin");
   let addBtn;
   if (admin === "true") {
-    addBtn = <Button
-      sx={{
-        fontSize: 15,
-        height: "32px",
-        marginRight: "20px",
-        marginTop: "12px",
-      }}
-      variant="contained"
-      onClick={handleOpen}
-    >
-      Add
-    </Button>
+    addBtn = (
+      <Button
+        sx={{
+          fontSize: 15,
+          height: "32px",
+          marginRight: "20px",
+          marginTop: "12px",
+        }}
+        variant="contained"
+        onClick={handleOpen}
+      >
+        Add
+      </Button>
+    );
   } else {
-    addBtn = <div></div>
+    addBtn = <div></div>;
   }
-
-
 
   return (
     <div className="rightSideMerch">
       <div className="merchNavbar">
         <h2 className="MerchHeaderText">Merchandise</h2>
         <div className="m-n">
-
           {addBtn}
-
-
 
           <Link to="/cart">
             <IconButton
@@ -113,12 +110,32 @@ const MerchRightSide = () => {
         <MerchCardList setPageCount={setPageCount} currentPage={currentPage} />
       </div>
       <div className="pagination">
-        <Button onClick={() => handlePagePrev()} sx={{ fontSize: 20 }}>
-          prev
-        </Button>
-        <Button onClick={() => handlePageNext()} sx={{ fontSize: 20 }}>
-          next
-        </Button>
+        {currentPage === 1 ? (
+          <Button
+            disabled
+            onClick={() => handlePagePrev()}
+            sx={{ fontSize: 20 }}
+          >
+            prev
+          </Button>
+        ) : (
+          <Button onClick={() => handlePagePrev()} sx={{ fontSize: 20 }}>
+            prev
+          </Button>
+        )}
+        {currentPage === pageCount ? (
+          <Button
+            disabled
+            onClick={() => handlePageNext()}
+            sx={{ fontSize: 20 }}
+          >
+            next
+          </Button>
+        ) : (
+          <Button onClick={() => handlePageNext()} sx={{ fontSize: 20 }}>
+            next
+          </Button>
+        )}
       </div>
     </div>
   );
