@@ -5,11 +5,8 @@ const useForm = () => {
     const [values, setValues] = useState({
         cardName: '',
         cardNumber: '',
-        cardType: '',
         cardExpiration: '',
         cardSecurityCode: '',
-        cardPostalCode: '',
-        focus: ''
     })
 
     const [errors, setErrors] = useState({})

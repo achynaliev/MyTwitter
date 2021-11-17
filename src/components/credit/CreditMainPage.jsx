@@ -4,13 +4,14 @@ import CreditCardPage from './CreditCardPage';
 
 const CreditMainPage = () => {
     return (
-        <div className="credit-main-page">
-            <LeftSideBar />
-            <div className="ccp">
-
-                <CreditCardPage />
+        <>
+            <div className="credit-main-page">
+                <LeftSideBar />
+                <div className="ccp">
+                    <CreditCardPage />
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

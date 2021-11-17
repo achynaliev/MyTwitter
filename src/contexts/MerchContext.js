@@ -30,15 +30,11 @@ const reducer = (state = INIT_STATE, action) => {
 const MerchContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createMerch = async (merch) => {
+  const createMerch = async (merch, category) => {
     try {
       const response = await axios.post(APImerch, merch);
-      let action = {
-        type: "CREATE_MERCH",
-        payload: response.data,
-      };
-      dispatch(action);
-      getAllMerch();
+
+      getItemsByCategory(category)
     } catch (e) {
       console.log(e);
     }

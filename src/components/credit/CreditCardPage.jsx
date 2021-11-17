@@ -1,25 +1,55 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Button } from "@mui/material";
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import useForm from "./useForm";
-import { Button, Form, Alert, Row, Col } from "react-bootstrap";
+import { Form, Alert } from "react-bootstrap";
+import Badge from "@mui/material/Badge";
+
 //import "bootstrap/dist/css/bootstrap.min.css";
 import "./CreditCardForm.css";
+
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
+import { useNavigate } from "react-router";
+import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
+import { merchContext } from "../../contexts/MerchContext";
 
 
 const CreditCardPage = () => {
   const { handleChange, handleFocus, handleSubmit, values, errors } = useForm();
+  let navigate = useNavigate();
+  const { merchCountInCart } = useContext(merchContext);
+
+
+  if (errors.message === "Payment was successful!") {
+    setTimeout(() => navigate("/products/all"), 3500)
+  }
+
   return (
     <div>
-      <div className="container" style={{ bgcolor: "white" }}>
+      <div className="creditCardPageNavbar">
+        <h2 className="creditHeaderText">Complete your perches</h2>
+        <Link to="/cart">
+          <IconButton
+            size="large"
+            aria-label="show 4 new mails"
+            color="inherit"
+          >
+            <Badge badgeContent={merchCountInCart} color="error">
+              <ShoppingCart sx={{ fontSize: 28, color: "white" }} />
+            </Badge>
+          </IconButton>
+        </Link>
+
+      </div>
+      <div className="creditCardMainDiv" style={{ bgcolor: "white" }}>
         <div className="box justify-content-center align-items-center">
           <div className="formDiv">
             <div className="creditCard">
               <Cards
                 cvc={values.cardSecurityCode}
                 expiry={values.cardExpiration}
-                focused={values.focus}
                 name={values.cardName}
                 number={values.cardNumber}
               />
@@ -27,7 +57,7 @@ const CreditCardPage = () => {
             <div className="card-inputs">
 
               <Form onSubmit={handleSubmit}>
-                <Form.Group>
+                <Form.Group className="rowrowrow">
                   <Form.Control
                     type="text"
                     id="cardName"
@@ -40,7 +70,7 @@ const CreditCardPage = () => {
                     isValid={errors.cname}
                   />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className="rowrowrow">
                   <Form.Control
                     type="number"
                     id="cardNumber"
@@ -53,94 +83,62 @@ const CreditCardPage = () => {
                     isValid={errors.cnumber}
                   />
                 </Form.Group>
-                <Row>
-                  <Col>
-                    <Form.Group>
-                      <Form.Control
-                        type="text"
-                        name="cardType"
-                        id="cardType"
-                        data-testid="cardType"
-                        placeholder="Card Type"
-                        value={values.cardType}
-                        onChange={handleChange}
-                        onFocus={handleFocus}
-                        isValid={errors.ctype}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col>
-                    <Form.Group>
-                      <Form.Control
-                        type="text"
-                        id="cardExpiration"
-                        data-testid="cardExpiration"
-                        name="cardExpiration"
-                        placeholder="Expiration Date"
-                        value={values.cardExpiration}
-                        onChange={handleChange}
-                        onFocus={handleFocus}
-                        isValid={errors.cexp}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <Form.Group>
-                      <Form.Control
-                        type="number"
-                        id="cardSecurityCode"
-                        data-testid="cardSecurityCode"
-                        name="cardSecurityCode"
-                        placeholder="Security Code"
-                        value={values.cardSecurityCode}
-                        onChange={handleChange}
-                        onFocus={handleFocus}
-                        isValid={errors.ccvv}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col>
-                    <Form.Group>
-                      <Form.Control
-                        type="text"
-                        id="cardPostalCode"
-                        data-testid="cardPostalCode"
-                        name="cardPostalCode"
-                        placeholder="Postal Code"
-                        value={values.cardPostalCode}
-                        onChange={handleChange}
-                        onFocus={handleFocus}
-                        isValid={errors.cpostal}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-                <Link to="/cart">
+                <Form.Group className="rowrowrow">
+                  <Form.Control
+                    type="text"
+                    id="cardExpiration"
+                    data-testid="cardExpiration"
+                    name="cardExpiration"
+                    placeholder="Expiration Date"
+                    value={values.cardExpiration}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    isValid={errors.cexp}
+                  />
+                </Form.Group>
+                <Form.Group className="rowrowrow">
+                  <Form.Control
+                    type="number"
+                    id="cardSecurityCode"
+                    data-testid="cardSecurityCode"
+                    name="cardSecurityCode"
+                    placeholder="Security Code"
+                    value={values.cardSecurityCode}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    isValid={errors.ccvv}
+                  />
+                </Form.Group>
+
+                <div className="btn-pay">
                   <Button
+                    variant="contained"
                     size={"block"}
                     data-testid="validateButton"
                     id="validateButton"
                     type="submit"
                   >
-                    Validate
+                    Pay
                   </Button>
-                </Link>
+                </div>
+
               </Form>
             </div>
           </div>
-          <Alert
-            id="alertMessage"
-            data-testid="alertMessage"
-            variant={errors.variant}
-            show={errors.show}
-          >
-            {errors.message}
-          </Alert>{" "}
+          <div className="alert">
+            <Alert
+              className="alertText"
+              id="alertMessage"
+              data-testid="alertMessage"
+              variant={errors.variant}
+              show={errors.show}
+            >
+              {errors.message}
+            </Alert>
+          </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
