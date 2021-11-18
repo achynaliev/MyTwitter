@@ -96,3 +96,17 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.tweetNavbar {
+  height: 20%;
+  border-bottom: 0.05px solid rgb(117, 117, 117);
+}
+
+.tweetContainer {
+  margin-top: 5px;
+  margin-left: 20px;
+  width: 40%;
+  height: 100%;
+  border-left: 0.05px solid rgb(117, 117, 117);
+  border-right: 0.05px solid rgb(117, 117, 117);
+}
