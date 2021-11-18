@@ -114,3 +114,57 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.tweetPageStructure {
+  width: 78%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tweetNavbar {
+  width: 100%;
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  border-bottom: 0.05px solid rgb(117, 117, 117);
+  font-size: 20px;
+  background-color: black;
+}
+
+.mainFeedContainerr {
+  margin-top: 5px;
+  margin-left: 20px;
+  width: 40%;
+  height: 100%;
+  border-left: 0.05px solid rgb(117, 117, 117);
+  border-right: 0.05px solid rgb(117, 117, 117);
+}
+
+.tweetNavbar>h2 {
+  color: white;
+  font-size: 30px;
+  margin-left: 10px;
+  font-weight: 300;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-reply {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  border-bottom: 0.05px solid rgb(117, 117, 117);
+  width: 100%;
+  margin-top: 12px;
+  /* justify-content: space-between; */
+}
+
+.btn-replyy {
+  margin-right: 5px;
+  display: flex;
+}
