@@ -55,11 +55,21 @@ const UserContextProvider = (props) => {
     }
   };
 
+  const removeFromUsersFollowing = async (userId, following) => {
+    try {
+      let tempAPI = APIusers + userId;
+      await axios.patch(tempAPI, following);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <userContext.Provider
       value={{
         createAUser,
         AddToUserFollowings,
+        removeFromUsersFollowing,
         getAUser,
         username: state.user,
       }}
