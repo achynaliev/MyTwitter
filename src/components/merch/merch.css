@@ -85,3 +85,53 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media only screen and (max-width: 475px) {
+  .merchPage {
+    width: 100%;
+  }
+
+  .rightSideMerch {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .merchPage {
+    width: 100%;
+  }
+
+  .rightSideMerch {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .merchPage {
+    width: 100%;
+  }
+
+  .rightSideMerch {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .merchPage {
+    width: 100%;
+  }
+
+  .rightSideMerch {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .merchPage {
+    width: 100%;
+  }
+
+  .rightSideMerch {
+    width: 100%;
+  }
+}

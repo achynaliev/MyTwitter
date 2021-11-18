@@ -6,7 +6,6 @@ import Modal from "@mui/material/Modal";
 import "./merch.css";
 import { merchContext } from "../../contexts/MerchContext";
 import { useParams } from "react-router-dom";
-import { display } from "@mui/system";
 
 const style = {
   position: "absolute",
@@ -30,7 +29,6 @@ const EditMerchModal = ({ item, handleClose, open }) => {
     category: item.category,
   });
   const params = useParams();
-
 
   function handleChange(e) {
     let tempMyMerch = { ...myMerch, [e.target.name]: e.target.value };

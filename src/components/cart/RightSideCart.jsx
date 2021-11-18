@@ -12,9 +12,11 @@ import Paper from "@mui/material/Paper";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+
 
 const RightSideCart = () => {
-  const { cart, getCart, getAllMerch } = useContext(merchContext);
+  const { cart, getCart, getAllMerch, merch, deleteMerchInCart } = useContext(merchContext);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -26,6 +28,12 @@ const RightSideCart = () => {
 
   function handleBuy() {
     navigate("/credit");
+  }
+
+  function handleDeleteMerch(e, merch) {
+    e.preventDefault();
+    deleteMerchInCart(merch)
+    getCart()
   }
 
   return (
@@ -74,37 +82,50 @@ const RightSideCart = () => {
                 >
                   Category
                 </TableCell>
+
+                <TableCell
+                  align="right">
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {cart
                 ? cart.merch.map((item) => (
-                    <TableRow TableRow key={item.merch.id} sx={{}}>
-                      <TableCell
-                        sx={{ color: "white", fontSize: "15px" }}
-                        component="th"
-                        scope="row"
-                      >
-                        {item.merch.title}
-                      </TableCell>
-                      <TableCell align="center">
-                        <img width="50" src={item.merch.imageURL} alt="" />
-                      </TableCell>
+                  <TableRow TableRow key={item.merch.id} sx={{}}>
+                    <TableCell
+                      sx={{ color: "white", fontSize: "15px" }}
+                      component="th"
+                      scope="row"
+                    >
+                      {item.merch.title}
+                    </TableCell>
+                    <TableCell align="center">
+                      <img width="50" src={item.merch.imageURL} alt="" />
+                    </TableCell>
 
-                      <TableCell
-                        sx={{ color: "white", fontSize: "15px" }}
-                        align="right"
-                      >
-                        {item.merch.price}
-                      </TableCell>
-                      <TableCell
-                        sx={{ color: "white", fontSize: "15px" }}
-                        align="right"
-                      >
-                        {item.merch.category}
-                      </TableCell>
-                    </TableRow>
-                  ))
+                    <TableCell
+                      sx={{ color: "white", fontSize: "15px" }}
+                      align="right"
+                    >
+                      {item.merch.price}
+                    </TableCell>
+                    <TableCell
+                      sx={{ color: "white", fontSize: "15px" }}
+                      align="right"
+                    >
+                      {item.merch.category}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                    >
+                      <HighlightOffIcon
+                        sx={{ color: "white", width: "30px" }}
+                        variant="contained"
+                        onClick={(e) => handleDeleteMerch(e, item.merch)}
+                      />
+                    </TableCell>
+                  </TableRow>
+                ))
                 : null}
               <TableRow>
                 <TableCell
@@ -125,6 +146,8 @@ const RightSideCart = () => {
                 >
                   {cart ? cart.totalPrice : 0} сом
                 </TableCell>
+                <TableCell
+                  align="right"></TableCell>
               </TableRow>
             </TableBody>
           </Table>

@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
-import "./tweets.css";
 import atai from "../../images/atai.jpg";
+import "./tweets.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ShareIcon from "@mui/icons-material/Share";
 import ReplayIcon from "@mui/icons-material/Replay";
 import { likesContext } from "../../contexts/LikesContext";
 import { tweetContext } from "../../contexts/TweetContext";
+import { Link } from "react-router-dom";
 
 function timeSince(date) {
   let seconds = Math.floor((new Date() - date) / 1000);
@@ -38,7 +39,7 @@ const SingleTweet = ({ tweet, likesForAUser }) => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [isLiked, setLiked] = useState(false);
   const [likeId, setLikeId] = useState(null);
-  const [numLikes, setNumLikes] = useState(tweet.numberOfLikes)
+  const [numLikes, setNumLikes] = useState(tweet.numberOfLikes);
 
   const { LikeAtweet, deleteAlikeOnATweet } = useContext(likesContext);
   let username = localStorage.getItem("username");
@@ -51,27 +52,25 @@ const SingleTweet = ({ tweet, likesForAUser }) => {
       }
     }
   }, [likesForAUser]);
-  const { updateNumberOfLikes } = useContext(tweetContext)
+  const { updateNumberOfLikes } = useContext(tweetContext);
 
   function handleLike() {
     if (isLiked) {
       deleteAlikeOnATweet(likeId, username);
       setLiked(false);
-      updateNumberOfLikes(tweet.id, tweet.numberOfLikes - 1)
-      setNumLikes(numLikes - 1)
+      updateNumberOfLikes(tweet.id, tweet.numberOfLikes - 1);
+      setNumLikes(numLikes - 1);
     } else {
       LikeAtweet(tweet.id, username);
       setLiked(true);
-      updateNumberOfLikes(tweet.id, tweet.numberOfLikes + 1)
-      setNumLikes(numLikes + 1)
+      updateNumberOfLikes(tweet.id, tweet.numberOfLikes + 1);
+      setNumLikes(numLikes + 1);
     }
   }
 
   useEffect(() => {
     setTimeLeft(timeSince(tweet.CreatedAtMs));
   }, []);
-
-
 
   return (
     <div className="tweetContainer">
@@ -81,24 +80,36 @@ const SingleTweet = ({ tweet, likesForAUser }) => {
         alt="..."
       ></img>
       <div className="createTweetInputContainer">
-        <h6 className="tweetUsername">
-          @{tweet.ownerUsername} {timeLeft} ago
-        </h6>
-        <h5 className="tweetText">{tweet.tweet}</h5>
+        <div className="singleTweetHeader">
+          <h6 className="tweetUsername">
+            @{tweet.ownerUsername} {timeLeft} ago
+          </h6>
+        </div>
+        <Link
+          style={{ textDecoration: "none" }}
+          to={"/" + tweet.ownerUsername + "/" + tweet.id}
+        >
+          <h5 className="tweetText">{tweet.tweet}</h5>
+        </Link>
         <div className="tweetFooter">
-          <ChatBubbleOutlineIcon
-            sx={{ fontSize: 18 }}
-            style={{ color: "gray" }}
-          />
+          <Link to={"/" + tweet.ownerUsername + "/" + tweet.id}>
+            <ChatBubbleOutlineIcon
+              sx={{ fontSize: 18 }}
+              style={{ color: "gray" }}
+            />
+          </Link>
           <ReplayIcon sx={{ fontSize: 20 }} style={{ color: "gray" }} />
           <div>
             <FavoriteBorderIcon
               onClick={handleLike}
               sx={{ fontSize: 20 }}
-              style={isLiked ? { color: "red" } : { color: "gray" }}
+              style={
+                isLiked
+                  ? { color: "red", marginRight: "3px" }
+                  : { color: "gray", marginRight: "3px" }
+              }
             />
-            <div>{numLikes != 0 ? numLikes : ""}</div>
-
+            <div className="likesNum">{numLikes != 0 ? numLikes : ""}</div>
           </div>
 
           <ShareIcon sx={{ fontSize: 18 }} style={{ color: "gray" }} />

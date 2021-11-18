@@ -5,14 +5,17 @@
   width: 50px;
   height: 50px;
   object-fit: cover;
-
   /* round the edges to a circle with border radius 1/2 container size */
   border-radius: 50%;
 }
 
+.FollowLineCard {
+  display: flex;
+}
+
 .createTweetInput {
   background-color: black;
-  width: 100%;
+  width: 90%;
   height: 50px;
   margin-top: 10px;
   font-size: 22px;
@@ -20,6 +23,7 @@
   color: white;
   border: none;
   padding-bottom: 25px;
+  margin-left: 10px;
 }
 
 .createTweetInput:focus {
@@ -52,6 +56,7 @@
   padding-top: 15px;
   display: flex;
   justify-content: space-between;
+  width: 95%;
 }
 
 .lowerInputLogos {
@@ -67,7 +72,6 @@
   width: 50px;
   height: 50px;
   object-fit: cover;
-
   /* round the edges to a circle with border radius 1/2 container size */
   border-radius: 50%;
 }
@@ -78,14 +82,111 @@
 }
 
 .tweetText {
+  padding-top: 12px;
   font-size: 21px;
   font-weight: 400;
+  color: white;
 }
 
 .tweetFooter {
   padding-top: 15px;
-  width: 100%;
-  margin: auto;
+  width: 95%;
   display: flex;
   justify-content: space-between;
+}
+
+.likesNum {
+  color: gray;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.tweetPageStructure {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.singleTweetHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tweetPageStructure {
+  width: 78%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tweetNavbar {
+  width: 100%;
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  border-bottom: 0.05px solid rgb(117, 117, 117);
+  font-size: 20px;
+  background-color: black;
+}
+
+.mainFeedContainerr {
+  margin-top: 5px;
+  margin-left: 20px;
+  width: 40%;
+  height: 100%;
+  border-left: 0.05px solid rgb(117, 117, 117);
+  border-right: 0.05px solid rgb(117, 117, 117);
+}
+
+.tweetNavbar > h2 {
+  color: white;
+  font-size: 30px;
+  margin-left: 10px;
+  font-weight: 300;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-reply {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 0.05px solid rgb(117, 117, 117);
+  width: 100%;
+  margin-top: 12px;
+}
+
+.commentIPT {
+  width: 85%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-replyy {
+  margin-right: 5px;
+  display: flex;
+  height: 50%;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-right: 5px;
+}
+
+.comments {
+  color: white;
+}
+
+.followUserImage {
+  margin-left: 5px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  /* round the edges to a circle with border radius 1/2 container size */
+  border-radius: 50%;
 }
