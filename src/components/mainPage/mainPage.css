@@ -27,7 +27,7 @@
   background-color: black;
 }
 
-.homeHeader > h1 {
+.homeHeader>h1 {
   font-size: 30px;
   margin-left: 10px;
   font-weight: 300;
@@ -103,28 +103,22 @@
   .rightSideBar {
     display: none;
   }
-
   .leftBar {
     width: 10%;
     margin: 0;
   }
-
   .mainFeedContainer {
     width: 100%;
   }
-
   .main-page-structure {
     width: 90%;
   }
-
   .leftSideListText {
     display: none;
   }
-
   .logoutBtn {
     display: none;
   }
-
   .logoutBtn {
     display: none;
   }
@@ -135,28 +129,22 @@
     width: 15%;
     margin: 0;
   }
-
   .rightSideBar {
     display: none;
   }
-
   .mainFeedContainer {
     width: 85%;
   }
-
   .main-page-structure {
     width: 100%;
     margin: 0;
   }
-
   .leftSideListText {
     display: none;
   }
-
   .tweet-left-side {
     display: none;
   }
-
   .leftListIcons {
     margin-left: 10px;
   }
@@ -167,30 +155,23 @@
     width: 15%;
     margin: 0;
   }
-
   .rightSideBar {
     display: none;
   }
-
   .mainFeedContainer {
     width: 85%;
   }
-
   .main-page-structure {
     width: 100%;
     margin: 0;
   }
-
   .leftSideListText {
     display: none;
   }
-
   .tweet-left-side {
     display: none;
   }
-
-  .leftListIcons {
-  }
+  .leftListIcons {}
 }
 
 @media only screen and (max-width: 700px) {
@@ -198,26 +179,20 @@
     width: 15%;
     margin: 0;
   }
-
   .rightSideBar {
     display: none;
   }
-
   .mainFeedContainer {
     width: 75%;
   }
-
   .main-page-structure {
     width: 100%;
     margin: 0;
   }
-
   .tweet-left-side {
     display: none;
   }
-
-  .leftListIcons {
-  }
+  .leftListIcons {}
 }
 
 @media only screen and (max-width: 800px) {
@@ -225,23 +200,17 @@
     width: 15%;
     margin: 0;
   }
-
   .mainFeedContainer {
     width: 75%;
   }
-
   .main-page-structure {
     width: 100%;
     margin: 0;
   }
-
   .tweet-left-side {
     display: none;
   }
-
-  .leftListIcons {
-  }
-
+  .leftListIcons {}
   .leftSideListText {
     display: none;
   }
@@ -252,16 +221,13 @@
     width: 15%;
     margin: 0;
   }
-
   .mainFeedContainer {
     width: 75%;
   }
-
   .main-page-structure {
     width: 100%;
     margin: 0;
   }
-
   .tweet-left-side {
     display: none;
   }
@@ -272,16 +238,13 @@
     width: 15%;
     margin: 0;
   }
-
   .mainFeedContainer {
     width: 75%;
   }
-
   .main-page-structure {
     width: 90%;
     margin: auto;
   }
-
   .tweet-left-side {
     display: none;
   }
@@ -292,16 +255,13 @@
     width: 15%;
     margin: 0;
   }
-
   .mainFeedContainer {
     width: 75%;
   }
-
   .main-page-structure {
     width: 80%;
     margin: auto;
   }
-
   .tweet-left-side {
     display: none;
   }
