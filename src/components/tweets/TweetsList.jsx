@@ -20,7 +20,21 @@ const TweetsList = () => {
   const [searchResultsState, setSearchResultsState] = useState(searchResults);
 
   let username = localStorage.getItem("username");
-  useEffect(username ? () => getLikesForAUser(username) : null, []);
+
+  function getItLater() {
+    username = localStorage.getItem("username");
+    if (username) {
+      getLikesForAUser(username);
+    }
+  }
+
+  useEffect(() => {
+    if (username) {
+      getLikesForAUser(username);
+    } else {
+      setTimeout(() => getItLater(), 2325);
+    }
+  }, []);
 
   useEffect(() => null, [likesForAUser]);
 

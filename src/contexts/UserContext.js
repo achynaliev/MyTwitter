@@ -5,12 +5,15 @@ export const userContext = React.createContext();
 
 const INIT_STATE = {
   user: null,
+  users: null,
 };
 
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
     case "SET_USER":
       return { ...state, user: action.payload };
+    case "ALL_USERS":
+      return { ...state, users: action.payload };
     default:
       return state;
   }
@@ -18,6 +21,18 @@ const reducer = (state = INIT_STATE, action) => {
 
 const UserContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
+
+  const getAllUsers = async () => {
+    try {
+      let result = await axios(APIusers);
+      dispatch({
+        type: "ALL_USERS",
+        payload: result.data,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const createAUser = async (email, username, uid, imageURL) => {
     let user = {
@@ -49,7 +64,7 @@ const UserContextProvider = (props) => {
   const AddToUserFollowings = async (userId, following) => {
     try {
       let tempAPI = APIusers + userId;
-      await axios.patch(tempAPI, following);
+      await axios.patch(tempAPI, { following });
     } catch (e) {
       console.log(e);
     }
@@ -58,7 +73,7 @@ const UserContextProvider = (props) => {
   const removeFromUsersFollowing = async (userId, following) => {
     try {
       let tempAPI = APIusers + userId;
-      await axios.patch(tempAPI, following);
+      await axios.patch(tempAPI, { following });
     } catch (e) {
       console.log(e);
     }
@@ -71,7 +86,9 @@ const UserContextProvider = (props) => {
         AddToUserFollowings,
         removeFromUsersFollowing,
         getAUser,
+        getAllUsers,
         username: state.user,
+        users: state.users,
       }}
     >
       {props.children}

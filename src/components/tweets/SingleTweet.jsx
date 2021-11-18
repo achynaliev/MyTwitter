@@ -8,8 +8,6 @@ import ReplayIcon from "@mui/icons-material/Replay";
 import { likesContext } from "../../contexts/LikesContext";
 import { tweetContext } from "../../contexts/TweetContext";
 import { Link } from "react-router-dom";
-import TweetPage from "../../pages/TweetPage";
-import { Button } from "@mui/material";
 
 function timeSince(date) {
   let seconds = Math.floor((new Date() - date) / 1000);
@@ -86,7 +84,6 @@ const SingleTweet = ({ tweet, likesForAUser }) => {
           <h6 className="tweetUsername">
             @{tweet.ownerUsername} {timeLeft} ago
           </h6>
-          <Button sx={{ marginTop: "-11px" }}>follow</Button>
         </div>
         <Link
           style={{ textDecoration: "none" }}

@@ -61,6 +61,7 @@ const LeftSideBar = () => {
       let profileIMG = localStorage.getItem("profileIMG");
       let usrname = localStorage.getItem("username");
       let admin = localStorage.getItem("admin");
+      let userID = localStorage.getItem("userID");
       if (!profileIMG) {
         localStorage.setItem("profileIMG", username[0].imageURL);
       }
@@ -71,14 +72,17 @@ const LeftSideBar = () => {
           JSON.stringify(username[0].following)
         );
       }
+      if (!userID) {
+        localStorage.setItem("userID", username[0].id);
+      }
       if (!admin) {
         localStorage.setItem("admin", username[0].admin);
       }
     }
   }
-  setTimeout(userLogedIn, 1800);
-  setTimeout(() => getUsr(), 1800);
-  setTimeout(() => setusr(), 2200);
+  setTimeout(userLogedIn, 1600);
+  setTimeout(() => getUsr(), 1600);
+  setTimeout(() => setusr(), 2100);
 
   return (
     <div className="leftBar">

@@ -9,6 +9,10 @@
   border-radius: 50%;
 }
 
+.FollowLineCard {
+  display: flex;
+}
+
 .createTweetInput {
   background-color: black;
   width: 100%;
@@ -77,6 +81,7 @@
 }
 
 .tweetText {
+  padding-top: 12px;
   font-size: 21px;
   font-weight: 400;
   color: white;

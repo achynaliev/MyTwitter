@@ -27,7 +27,7 @@
   background-color: black;
 }
 
-.homeHeader>h1 {
+.homeHeader > h1 {
   font-size: 30px;
   margin-left: 10px;
   font-weight: 300;
@@ -97,6 +97,40 @@
 
 .feedTopIcon {
   margin-right: 10px;
+}
+
+.followUserImage {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  /* round the edges to a circle with border radius 1/2 container size */
+  border-radius: 50%;
+}
+
+.FollowLineCard {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.FollowLineCard > div > h6 {
+  color: gray;
+}
+
+.FollowContainer > h3 {
+  color: lightgray;
+  align-self: center;
+  font-size: 28px;
+  font-size: 400;
+}
+
+.FollowContainer {
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgb(41, 41, 41);
+  display: flex;
+  flex-direction: column;
 }
 
 @media only screen and (max-width: 375px) {
@@ -171,7 +205,8 @@
   .tweet-left-side {
     display: none;
   }
-  .leftListIcons {}
+  .leftListIcons {
+  }
 }
 
 @media only screen and (max-width: 700px) {
@@ -192,7 +227,8 @@
   .tweet-left-side {
     display: none;
   }
-  .leftListIcons {}
+  .leftListIcons {
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -210,7 +246,8 @@
   .tweet-left-side {
     display: none;
   }
-  .leftListIcons {}
+  .leftListIcons {
+  }
   .leftSideListText {
     display: none;
   }
