@@ -10,80 +10,83 @@ import { Button } from "@mui/material";
 import CommentList from "../comment/CommentList";
 import { commentContext } from "../../contexts/CommentContext";
 
-const TweetMainStructure = () => {
-  const params = useParams();
-  const { getASpecificTweet, specific_tweet } = useContext(tweetContext);
-  const { getLikesForAUser, likesForAUser } = useContext(likesContext);
-  const { createAComment } = useContext(commentContext);
-  useEffect(() => {
-    getASpecificTweet(params.tweetId);
-  }, []);
-  useEffect(() => {
-    getLikesForAUser(params.username);
-  }, []);
+const TweetMainStructure = (props) => {
+    const params = useParams();
+    const { getASpecificTweet, specific_tweet } = useContext(tweetContext);
+    const { getLikesForAUser, likesForAUser } = useContext(likesContext);
+    const { createAComment, userImgURL } = useContext(commentContext);
+    useEffect(() => {
+        getASpecificTweet(params.tweetId);
+    }, []);
+    useEffect(() => {
+        getLikesForAUser(params.username);
+    }, []);
 
-  let [comment, setComment] = useState("");
-
-  function handleCreateComment() {
-    let time = new Date();
-    let timeMls = Date.now();
-    let userID = localStorage.getItem("userID");
+    let [comment, setComment] = useState("");
     let profileIMG = localStorage.getItem("profileIMG");
-    let username = localStorage.getItem("username");
-    console.log(comment);
-    createAComment(
-      username,
-      params.tweetId,
-      profileIMG,
-      comment,
-      userID,
-      time,
-      timeMls
-    );
-  }
 
-  return (
-    <div>
-      <div className="tweetPageStructure">
-        <LeftSideBar />
-        <div className="mainFeedContainerr">
-          <div className="tweetNavbar">
-            <ReplayIcon sx={{ fontSize: 20 }} style={{ color: "white" }} />
-            <h2>Tweeter</h2>
-          </div>
-          {specific_tweet && likesForAUser ? (
-            <SingleTweet tweet={specific_tweet} likesForAUser={likesForAUser} />
-          ) : (
-            <div></div>
-          )}
+    function handleCreateComment() {
+        let time = new Date();
+        let timeMls = Date.now();
+        let userID = localStorage.getItem("userID");
+        profileIMG = localStorage.getItem("profileIMG");
+        let username = localStorage.getItem("username");
+        // console.log(comment);
+        createAComment(
+            username,
+            params.tweetId,
+            profileIMG,
+            comment,
+            userID,
+            time,
+            timeMls
+        );
+    }
 
-          <div className="btn-reply">
-            <input
-              type="text"
-              className="createTweetInput"
-              name="tweet"
-              placeholder="Text"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
-            <div>
-              <div className="btn-replyy">
-                <Button
-                  onClick={handleCreateComment}
-                  variant="contained"
-                  size="medium"
-                >
-                  Reply
-                </Button>
-              </div>
+    return (
+        <div>
+            <div className="tweetPageStructure">
+                <LeftSideBar />
+                <div className="mainFeedContainerr">
+                    <div className="tweetNavbar">
+                        <ReplayIcon sx={{ fontSize: 20 }} style={{ color: "white" }} />
+                        <h2>Tweeter</h2>
+                    </div>
+                    {specific_tweet && likesForAUser ? (
+                        <SingleTweet tweet={specific_tweet} likesForAUser={likesForAUser} />
+                    ) : (
+                        <div></div>
+                    )}
+
+
+                    <div className="btn-reply">
+                        <img src={profileIMG} className="followUserImage" alt="" />
+                        <input
+                            type="text"
+                            className="createTweetInput"
+                            name="tweet"
+                            placeholder="Text"
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                        />
+                        <div>
+                            <div className="btn-replyy">
+                                <Button
+                                    onClick={handleCreateComment}
+                                    variant="contained"
+                                    size="medium"
+                                >
+                                    Reply
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                    <CommentList />
+                </div>
+                <RightSideBar />
             </div>
-          </div>
-          <CommentList />
         </div>
-        <RightSideBar />
-      </div>
-    </div>
-  );
+    );
 };
 
 export default TweetMainStructure;

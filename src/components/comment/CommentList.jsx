@@ -4,19 +4,21 @@ import { useParams } from "react-router-dom";
 import Comment from "./Comment";
 
 const CommentList = () => {
-  const { getAllComments, comments } = useContext(commentContext);
-  const params = useParams();
-  useEffect(() => getAllComments(params.tweetId), []);
+    const { getAllComments, comments, profileIMG } = useContext(commentContext);
+    const params = useParams();
+    useEffect(() => getAllComments(params.tweetId), []);
 
-  return (
-    <div>
-      {comments ? (
-        comments.map((comment) => <Comment comment={comment} />)
-      ) : (
-        <div></div>
-      )}{" "}
-    </div>
-  );
+    return (
+        <div className="comments">
+            <img src={profileIMG} className="followUserImage" alt="" />
+
+            {comments ? (
+                comments.map((comment) => <Comment comment={comment} />)
+            ) : (
+                <div></div>
+            )}{" "}
+        </div>
+    );
 };
 
 export default CommentList;
