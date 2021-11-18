@@ -79,6 +79,7 @@
 .tweetText {
   font-size: 21px;
   font-weight: 400;
+  color: white;
 }
 
 .tweetFooter {
@@ -88,10 +89,22 @@
   justify-content: space-between;
 }
 
+.likesNum {
+  color: gray;
+  display: inline-block;
+  font-size: 15px;
+}
+
 .tweetPageStructure {
   width: 90%;
   height: 100%;
   margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.singleTweetHeader {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
