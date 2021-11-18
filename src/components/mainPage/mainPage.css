@@ -179,9 +179,6 @@
   .tweet-left-side {
     display: none;
   }
-  /* .leftListIcons {
-    margin-left: 10px;
-  } */
 }
 
 @media only screen and (max-width: 600px) {

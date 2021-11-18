@@ -15,7 +15,7 @@
 
 .createTweetInput {
   background-color: black;
-  width: 100%;
+  width: 90%;
   height: 50px;
   margin-top: 10px;
   font-size: 22px;
@@ -23,6 +23,7 @@
   color: white;
   border: none;
   padding-bottom: 25px;
+  margin-left: 10px;
 }
 
 .createTweetInput:focus {
@@ -144,7 +145,7 @@
   border-right: 0.05px solid rgb(117, 117, 117);
 }
 
-.tweetNavbar>h2 {
+.tweetNavbar > h2 {
   color: white;
   font-size: 30px;
   margin-left: 10px;
@@ -156,19 +157,36 @@
 
 .btn-reply {
   display: flex;
-  justify-content: flex-end;
   flex-direction: row;
   border-bottom: 0.05px solid rgb(117, 117, 117);
   width: 100%;
   margin-top: 12px;
-  /* justify-content: space-between; */
+}
+
+.commentIPT {
+  width: 85%;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .btn-replyy {
   margin-right: 5px;
   display: flex;
+  height: 50%;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-right: 5px;
 }
 
 .comments {
   color: white;
+}
+
+.followUserImage {
+  margin-left: 5px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  /* round the edges to a circle with border radius 1/2 container size */
+  border-radius: 50%;
 }
