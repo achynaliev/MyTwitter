@@ -10,6 +10,7 @@ import MerchPage from "./pages/MerchPage";
 import CartMainPage from "./components/cart/CartMainPage";
 import CreditMainPage from "./components/credit/CreditMainPage";
 import LikesContextProvider from "./contexts/LikesContext";
+import TweetPage from "./pages/TweetPage";
 
 const TweeterRoutes = () => {
   return (
@@ -23,13 +24,10 @@ const TweeterRoutes = () => {
                   <Route exact path="/" element={<MainPage />} />
                   <Route exact path="/explore" element={<MainPage />} />
                   <Route exact path="/auth" element={<AuthPage />} />
-                  <Route
-                    exact
-                    path="/products/:category"
-                    element={<MerchPage />}
-                  />
+                  <Route exact path="/products/:category" element={<MerchPage />} />
                   <Route exact path="/cart" element={<CartMainPage />} />
                   <Route exact path="/credit" element={<CreditMainPage />} />
+                  <Route exact path="/ownerUsername" element={<TweetPage />} />
                 </Routes>
               </BrowserRouter>
             </MerchContextProvider>
