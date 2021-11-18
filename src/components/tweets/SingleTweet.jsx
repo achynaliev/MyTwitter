@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import "./tweets.css";
 import atai from "../../images/atai.jpg";
+import "./tweets.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ShareIcon from "@mui/icons-material/Share";
