@@ -1,0 +1,483 @@
+{
+  "users": [
+    {
+      "username": "chynaliev",
+      "email": "chynaliev.ae@gmail.com",
+      "uid": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "following": [
+        "chynaliev",
+        "atai"
+      ],
+      "id": 1
+    },
+    {
+      "username": "ataiChynaliev",
+      "email": "achynaliev+122@gmail.com",
+      "uid": "d7OBdSVyJuMKC6QE6shRsMwM2OG2",
+      "imageURL": "https://images.unsplash.com/photo-1636308600707-e19abecd6246?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80",
+      "following": [
+        "ataiChynaliev"
+      ],
+      "id": 2
+    },
+    {
+      "username": "pinkfasion",
+      "email": "atai@atai.com",
+      "admin": "true",
+      "uid": "4YpSMBpiTyWZ9hymJv5rUJtSuyC3",
+      "imageURL": "https://images.unsplash.com/photo-1600566493196-43294a462893?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
+      "following": [
+        "pinkfasion"
+      ],
+      "id": 3
+    },
+    {
+      "username": "gggboxing",
+      "email": "ggg@ggg.com",
+      "uid": "IKLfpKCUAgPQ0byIX1g9kxvMjy02",
+      "imageURL": "https://images.unsplash.com/photo-1636308600707-e19abecd6246?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80",
+      "following": [
+        "gggboxing"
+      ],
+      "id": 4
+    },
+    {
+      "username": "wutang",
+      "email": "achynaliev+323232@gmail.com",
+      "admin": "true",
+      "uid": "GGme9Jn0sOflBb6WWTfUPTbVe6d2",
+      "imageURL": "https://images.unsplash.com/photo-1636308600707-e19abecd6246?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80",
+      "following": [
+        "wutang",
+        "pinkfasion"
+      ],
+      "id": 5
+    }
+  ],
+  "tweets": [
+    {
+      "tweet": "hells yeah!!!",
+      "imgURL": "",
+      "ownerUID": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "numberOfLikes": 12,
+      "ownerUsername": "chynaliev",
+      "createdAt": "2021-11-14T11:57:11.839Z",
+      "CreatedAtMs": 1636891031839,
+      "id": 3
+    },
+    {
+      "tweet": "We did it!!!",
+      "imgURL": "",
+      "ownerUID": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "ownerUsername": "chynaliev",
+      "numberOfLikes": 12,
+      "createdAt": "2021-11-14T11:59:18.670Z",
+      "CreatedAtMs": 1636891158670,
+      "id": 4
+    },
+    {
+      "tweet": "Congrats ",
+      "imgURL": "",
+      "ownerUID": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "ownerUsername": "chynaliev",
+      "createdAt": "2021-11-14T11:59:25.683Z",
+      "numberOfLikes": 12,
+      "CreatedAtMs": 1636891165683,
+      "id": 5
+    },
+    {
+      "tweet": "We gotta celebrate this shit!!!",
+      "imgURL": "",
+      "ownerUID": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "numberOfLikes": 12,
+      "ownerUsername": "chynaliev",
+      "createdAt": "2021-11-14T11:59:41.043Z",
+      "CreatedAtMs": 1636891181043,
+      "id": 6
+    },
+    {
+      "tweet": "testing",
+      "imgURL": "",
+      "ownerUID": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "numberOfLikes": 12,
+      "ownerUsername": "chynaliev",
+      "createdAt": "2021-11-14T15:07:57.860Z",
+      "CreatedAtMs": 1636902477860,
+      "id": 7
+    },
+    {
+      "tweet": "why it is not working",
+      "imgURL": "",
+      "ownerUID": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "numberOfLikes": 12,
+      "ownerUsername": "chynaliev",
+      "createdAt": "2021-11-14T15:11:28.238Z",
+      "CreatedAtMs": 1636902688238,
+      "id": 8
+    },
+    {
+      "tweet": "auth",
+      "imgURL": "",
+      "numberOfLikes": 12,
+      "ownerUID": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "ownerUsername": "chynaliev",
+      "createdAt": "2021-11-14T15:18:56.621Z",
+      "CreatedAtMs": 1636903136621,
+      "id": 9
+    },
+    {
+      "tweet": "Hello world!",
+      "imgURL": "",
+      "ownerUID": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "ownerUsername": "chynaliev",
+      "numberOfLikes": 12,
+      "createdAt": "2021-11-14T15:19:30.297Z",
+      "CreatedAtMs": 1636903170297,
+      "id": 10
+    },
+    {
+      "tweet": "wu-tang-clan",
+      "imgURL": "",
+      "ownerUID": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "ownerUsername": "chynaliev",
+      "createdAt": "2021-11-15T05:00:18.964Z",
+      "numberOfLikes": 12,
+      "CreatedAtMs": 1636952418964,
+      "id": 11
+    },
+    {
+      "tweet": "cash fools everything around me",
+      "imgURL": "",
+      "ownerUID": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "ownerUsername": "chynaliev",
+      "numberOfLikes": 13,
+      "createdAt": "2021-11-15T05:04:43.595Z",
+      "CreatedAtMs": 1636952683595,
+      "id": 12
+    },
+    {
+      "tweet": "Ez go",
+      "imgURL": "",
+      "ownerUID": "r8lYvLyDEPb0T3gLhqkmdNQhzLW2",
+      "ownerUsername": "chynaliev",
+      "createdAt": "2021-11-15T06:01:37.237Z",
+      "numberOfLikes": 13,
+      "CreatedAtMs": 1636956097237,
+      "id": 13
+    },
+    {
+      "tweet": "see if my actual image displays?",
+      "imgURL": "",
+      "ownerUID": "d7OBdSVyJuMKC6QE6shRsMwM2OG2",
+      "numberOfLikes": 12,
+      "ownerUsername": "ataiChynaliev",
+      "ownerImgURl": "https://images.unsplash.com/photo-1636308600707-e19abecd6246?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80",
+      "createdAt": "2021-11-15T07:14:17.788Z",
+      "CreatedAtMs": 1636960457788,
+      "id": 14
+    },
+    {
+      "tweet": "dwdwd",
+      "imgURL": "",
+      "ownerUID": "d7OBdSVyJuMKC6QE6shRsMwM2OG2",
+      "numberOfLikes": 23,
+      "ownerUsername": "ataiChynaliev",
+      "ownerImgURl": "https://images.unsplash.com/photo-1636308600707-e19abecd6246?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80",
+      "createdAt": "2021-11-15T08:10:43.274Z",
+      "CreatedAtMs": 1636963843274,
+      "id": 15
+    },
+    {
+      "tweet": "Pink is here",
+      "imgURL": "",
+      "ownerUID": "4YpSMBpiTyWZ9hymJv5rUJtSuyC3",
+      "numberOfLikes": 127,
+      "ownerUsername": "pinkfasion",
+      "ownerImgURl": "https://images.unsplash.com/photo-1600566493196-43294a462893?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
+      "createdAt": "2021-11-16T05:21:15.628Z",
+      "CreatedAtMs": 1637040075628,
+      "id": 16
+    },
+    {
+      "tweet": "THis is my tweet",
+      "imgURL": "",
+      "ownerUID": "kzN28bq0HYeIvmNgZDHoDlOGyUJ3",
+      "ownerUsername": "wutangclan",
+      "ownerImgURl": "https://images.unsplash.com/photo-1636308600707-e19abecd6246?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80",
+      "numberOfLikes": 2,
+      "createdAt": "2021-11-18T18:32:09.165Z",
+      "CreatedAtMs": 1637260329165,
+      "id": 17
+    },
+    {
+      "tweet": "My first post",
+      "imgURL": "",
+      "ownerUID": "GGme9Jn0sOflBb6WWTfUPTbVe6d2",
+      "ownerUsername": "wutang",
+      "ownerImgURl": "https://images.unsplash.com/photo-1636308600707-e19abecd6246?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80",
+      "numberOfLikes": -1,
+      "createdAt": "2021-11-18T18:52:30.339Z",
+      "CreatedAtMs": 1637261550339,
+      "id": 18
+    }
+  ],
+  "merch": [
+    {
+      "title": "Polo",
+      "imageURL": "https://cdn1.ozone.ru/s3/multimedia-7/6066580783.jpg",
+      "price": "69",
+      "category": "t-shirt",
+      "id": 1
+    },
+    {
+      "title": "Polo",
+      "imageURL": "https://shoptoyou.su/image/cache/data/odnotonnye_futbolki/zelenaya_odnotonnaya_futbolka_bez_risunka-900x900.jpg",
+      "price": "300",
+      "category": "t-shirt",
+      "id": 2
+    },
+    {
+      "title": "Nike",
+      "imageURL": "https://ae01.alicdn.com/kf/HTB1AeKBB3KTBuNkSne1q6yJoXXae/2017-TRIBUTE-2PAC.jpg_q50.jpg",
+      "price": "400",
+      "category": "t-shirt",
+      "id": 3
+    },
+    {
+      "title": "Adidas",
+      "imageURL": "https://www.beauty-pack.ru/wp-content/uploads/2017/07/5bd26750-9eb7-11e3-9a91-18a9053c0de9.jpg",
+      "price": "405",
+      "category": "t-shirt",
+      "id": 4
+    },
+    {
+      "title": "Puma",
+      "imageURL": "https://art-holding.su/image/cache/catalog/APIcc/f4e/IMGf4e4c43a3398bcfe8f7832774aeb9d70-1000x1000.jpg",
+      "price": "306",
+      "category": "t-shirt",
+      "id": 5
+    },
+    {
+      "title": "Puma",
+      "imageURL": "https://all-t-shirts.ru/files/1471/1606/wet_wild_0.jpg",
+      "price": "500",
+      "category": "t-shirt",
+      "id": 6
+    },
+    {
+      "title": "Asycs",
+      "imageURL": "https://www.100suvenirov.ru/data/Image/c_objects/23885_b.jpg",
+      "price": "475",
+      "category": "t-shirt",
+      "id": 8
+    },
+    {
+      "title": "Nike",
+      "imageURL": "https://avatars.mds.yandex.net/i?id=bc9293e66d448a4ad459e9d1c06f3afe-4864053-images-thumbs&n=13",
+      "price": "456",
+      "category": "cap",
+      "id": 9
+    },
+    {
+      "title": "Nike",
+      "imageURL": "http://kupitoptom.by/image/cache/catalog/li/lestate/679421-551/kepka-nike-featherlight-optom-650x650.jpeg",
+      "price": "456",
+      "category": "cap",
+      "id": 10
+    },
+    {
+      "title": "Adidas",
+      "imageURL": "https://img.alicdn.com/imgextra/i1/1993730769/O1CN01wCoxeN1HYFBStayFY_!!1993730769.jpg",
+      "price": "456",
+      "category": "cap",
+      "id": 11
+    },
+    {
+      "title": "Adidas",
+      "imageURL": "https://totalsport.ua/image/cache/data/adidas/S13318-1-1100x1100_0-800x800_0.jpg",
+      "price": "456",
+      "category": "cap",
+      "id": 12
+    },
+    {
+      "title": "Adidas",
+      "imageURL": "https://img.alicdn.com/imgextra/i4/446338500/O1CN017ar6vC2Cf38hEi9W4-446338500.jpg",
+      "price": "456",
+      "category": "cap",
+      "id": 13
+    },
+    {
+      "title": "Puma",
+      "imageURL": "https://images.puma.net/images/052919/02/w/1000/h/1000/fnd/ZAF/",
+      "price": "456",
+      "category": "cap",
+      "id": 14
+    },
+    {
+      "title": "Puma",
+      "imageURL": "https://keeper-shop.ru/images/product_images/popup_images/shop_items_catalog_image124048.jpeg",
+      "price": "456",
+      "category": "cap",
+      "id": 15
+    },
+    {
+      "title": "Puma",
+      "imageURL": "https://images.puma.net/images/021688/01/w/1000/h/1000/fnd/ZAF/",
+      "price": "456",
+      "category": "cap",
+      "id": 16
+    },
+    {
+      "title": "Puma",
+      "imageURL": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202008/12/00166969707125____3__640x640.jpg",
+      "price": "456",
+      "category": "scarf",
+      "id": 17
+    },
+    {
+      "title": "Nike",
+      "imageURL": "https://media.merlin.pl/media/original/000/012/278/56bd71c11ab20.jpg",
+      "price": "1230",
+      "category": "scarf",
+      "id": 18
+    },
+    {
+      "title": "Nike",
+      "imageURL": "https://www.proball.ru/upload/images/35707827/e009bf702cb18446b7360439e0b205e2_500_500.jpg",
+      "price": "1400",
+      "category": "scarf",
+      "id": 19
+    },
+    {
+      "title": "Adidas",
+      "imageURL": "https://www.proball.ru/upload/images/35843529/3f6f3046a29f24f06dde738ce2b3acb8_1000_1000.jpg",
+      "price": "456",
+      "category": "scarf",
+      "id": 20
+    },
+    {
+      "title": "Puma",
+      "imageURL": "https://images.puma.net/images/052212/02/w/1000/h/1000/fnd/RUS/",
+      "price": "456",
+      "category": "scarf",
+      "id": 21
+    },
+    {
+      "title": "Adidas",
+      "imageURL": "https://images.wildberries.ru/big/new/5240000/5244821-1.jpg",
+      "price": "456",
+      "category": "scarf",
+      "id": 22
+    },
+    {
+      "title": "Adidas",
+      "imageURL": "https://lestate.ru/upload/product_images/resized/cy/cy56/cy5602/cy5602_00.jpg",
+      "price": "456",
+      "category": "scarf",
+      "id": 23
+    },
+    {
+      "title": "Asycs",
+      "imageURL": "https://www.proball.ru/upload/images/9680699/37eee110621ce7a01d4b233850744a41_1000_1000.jpg",
+      "price": 1800,
+      "category": "scarf",
+      "id": 24
+    },
+    {
+      "title": "Asycs",
+      "imageURL": "https://www.sportkult.ru/ipreview/goods/820/820/photo_8059.jpg",
+      "price": 1800,
+      "category": "scarf",
+      "id": 25
+    }
+  ],
+  "likes": [
+    {
+      "tweetId": 13,
+      "username": "pinkfasion",
+      "id": 2
+    },
+    {
+      "tweetId": 16,
+      "username": null,
+      "id": 3
+    },
+    {
+      "tweetId": 15,
+      "username": "pinkfasion",
+      "id": 5
+    },
+    {
+      "tweetId": 16,
+      "username": "pinkfasion",
+      "id": 6
+    },
+    {
+      "tweetId": 17,
+      "username": "wutangclan",
+      "id": 7
+    },
+    {
+      "tweetId": 16,
+      "username": "wutangclan",
+      "id": 8
+    },
+    {
+      "tweetId": 16,
+      "username": "wutang",
+      "id": 9
+    },
+    {
+      "tweetId": 16,
+      "username": "wutang",
+      "id": 10
+    },
+    {
+      "tweetId": 12,
+      "username": "wutang",
+      "id": 11
+    },
+    {
+      "tweetId": 17,
+      "username": "wutang",
+      "id": 12
+    },
+    {
+      "tweetId": 14,
+      "username": "wutang",
+      "id": 13
+    }
+  ],
+  "comments": [
+    {
+      "username": "pinkfasion",
+      "tweetId": "16",
+      "userImgURL": "https://images.unsplash.com/photo-1600566493196-43294a462893?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
+      "comment": "dwadawd",
+      "userID": "3",
+      "time": "2021-11-18T16:46:21.440Z",
+      "timeMls": 1637253981440,
+      "id": 1
+    },
+    {
+      "username": "pinkfasion",
+      "tweetId": "16",
+      "userImgURL": "https://images.unsplash.com/photo-1600566493196-43294a462893?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
+      "comment": "Hellow World",
+      "userID": "3",
+      "time": "2021-11-18T18:01:41.470Z",
+      "timeMls": 1637258501470,
+      "id": 2
+    },
+    {
+      "username": "wutang",
+      "tweetId": "16",
+      "userImgURL": "https://images.unsplash.com/photo-1636308600707-e19abecd6246?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80",
+      "comment": "hi there",
+      "userID": "5",
+      "time": "2021-11-18T18:54:02.250Z",
+      "timeMls": 1637261642250,
+      "id": 3
+    }
+  ]
+}
